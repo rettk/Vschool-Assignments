@@ -1,0 +1,301 @@
+/* .top {
+    display:inline-block;
+    background-color:#F5C6D6;
+    border:white 5px;
+    margin: 5px;
+    height: 200px;
+    width: 100vw;
+
+}
+.second {
+    background-color:#EE2E84;
+    border:white 5px;
+    margin: 5px;
+    display: inline-block;
+    height: 200px;
+    width: 23vw;
+
+}
+.light-pink{
+    background-color:#F5C6D6;
+    height: 200px;
+    width: 100vw;
+} */
+* {
+    font-size: 0;
+}
+.left-column-flags {
+    display: inline-block;
+    width: 50%;
+}
+.blue {
+    display:inline-block;
+    background-color:blue;
+    height: 200px;
+    width:100px;
+}
+.white {
+    display: inline-block;
+    background-color: white;
+    height: 200px;
+    width: 100px;
+}
+.red {
+    display: inline-block;
+    background-color: red;
+    height: 200px;
+    width: 100px;
+}
+
+.germany-black {
+    display: block;
+    background-color:black;
+    top: 50px;
+    height: 100px;
+    width: 300px;
+}
+.germany-red{
+    display: block;
+    background-color: red;
+    height: 100px;
+    width:300px;
+}
+.germany-yellow{
+    display: block;
+    background-color: yellow;
+    height: 100px;
+    width:300px;
+}
+.germany{
+    margin-top: 20px;
+}
+.mad2{
+    display: inline-block
+}
+.mad{
+    margin-top: 20px;
+    width: 300px;
+    display: block;
+    border: 2px solid black;
+}
+.mad-white{
+    display: inline-block;
+    background-color: white;
+    height: 200px;
+    width: 100px;
+}
+.mad-red{
+    display: block;
+    background-color: red;
+    height: 100px;
+    width: 200px;
+}
+.mad-green{
+    display: block;
+    background-color: green;
+    height: 100px;
+    width: 200px;
+}
+.swiss{
+    margin-top: 25px;
+}
+.swiss1{
+    display: inline-block;
+    background-color: red;
+    height: 150px;
+    width: 150px;
+}
+.swiss2{
+    display: inline-block;
+    background-color: red;
+    height: 50px;
+    width: 150px;
+    margin-bottom: 100px;
+}
+.swiss3{
+    display: inline-block;
+    background-color: red;
+    height: 150px;
+    width: 150px;
+}
+.swiss4{
+    display: inline-block;
+    background-color: red;
+    height: 150px;
+    width: 50px;
+}
+.swiss5{
+    display: inline-block;
+    background-color: red;
+    height: 150px;
+    width: 50px;
+    margin-left: 350px;
+}
+.swiss7{
+    display: inline-block;
+    background-color: red;
+    height: 150px;
+    width: 150px;
+}
+.swiss8{
+    display: inline-block;
+    background-color: red;
+    height: 50px;
+    width: 150px;
+}
+.swiss9{
+    display: inline-block;
+    background-color: red;
+    height: 150px;
+    width: 150px;
+}
+.sweden{
+    margin-top: 25px;
+}
+.sweden1 {
+    display: inline-block;
+    background-color: blue;
+    height: 100px;
+    width: 100px;
+}
+.sweden2 {
+    display: inline-block;
+    background-color: yellow;
+    height: 100px;
+    width: 50px;
+}
+.sweden3 {
+    display: inline-block;
+    background-color: blue;
+    height: 100px;
+    width: 350px;
+}
+.sweden4 {
+    background-color: yellow;
+    height: 50px;
+    width: 500px;
+}
+.sweden7 {
+    display: inline-block;
+    background-color: blue;
+    height: 100px;
+    width: 100px;
+}
+.sweden8 {
+    display: inline-block;
+    background-color: yellow;
+    height: 100px;
+    width: 50px;
+}
+.sweden9 {
+    display: inline-block;
+    background-color: blue;
+    height: 100px;
+    width: 350px;
+}
+.gambia{
+    margin-top: 25px;
+}
+.gambia-red{
+    background-color: red;
+    height: 100px;
+    width: 300px;
+}
+.gambia-blue{
+    margin-top: 10px;
+    background-color: blue;
+    height: 70px;
+    width: 300px;
+}
+.gambia-green{
+    margin-top: 10px;
+    background-color: green;
+    height: 100px;
+    width: 300px;
+}
+.right-column-flags{
+    display: inline-block;
+    width: 50%;
+}
+.tonga{
+    width: 360px;
+    border: 2px solid black;
+}
+.tonga1{
+    display: inline-block;
+    width: 70px;
+    height: 40px;
+    background-color: white;
+}
+.tonga2{
+    display: inline-block;
+    width: 20px;
+    height: 30px;
+    background-color: red;
+}
+.tonga3{
+    display: inline-block;
+    width: 70px;
+    height: 40px;
+    background-color: white;
+}
+.tonga4{
+    display: inline-block;
+    width: 200px;
+    height: 40px;
+    background-color: red;
+}
+.tonga5{
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    background-color: white;
+}
+.tonga6{
+    display: inline-block;
+    width: 80px;
+    height: 20px;
+    background-color: red;
+}
+.tonga7{
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    background-color: white;
+}
+.tonga8{
+    display: inline-block;
+    width: 200px;
+    height: 20px;
+    background-color: red;
+}
+.tonga9{
+    display: inline-block;
+    width: 70px;
+    height: 40px;
+    background-color: white;
+}
+.tonga10{
+    display: inline-block;
+    width: 20px;
+    height: 30px;
+    background-color: red;
+    margin-bottom: 10px;
+}
+.tonga11{
+    display: inline-block;
+    width: 70px;
+    height: 40px;
+    background-color: white;
+}
+.tonga12{
+    display: inline-block;
+    width: 200px;
+    height: 40px;
+    background-color: red;
+}
+.tonga13{
+    width: 360px;
+    height: 100px;
+    background-color: red;
+}

@@ -1,0 +1,23 @@
+.top {
+    display:inline-block;
+    background-color:#F5C6D6;
+    border:white 5px;
+    margin: 5px;
+    height: 200px;
+    width: 100vw;
+
+}
+.second {
+    background-color:#EE2E84;
+    border:white 5px;
+    margin: 5px;
+    display: inline-block;
+    height: 200px;
+    width: 23vw;
+
+}
+.light-pink{
+    background-color:#F5C6D6;
+    height: 200px;
+    width: 100vw;
+}
