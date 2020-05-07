@@ -1,0 +1,10 @@
+#box {
+    display: inline-block;
+    background-color: black;
+    height: 50px;
+    width: 50px;
+}
+
+#box-holder {
+    text-align: center;
+}
