@@ -46,4 +46,3 @@ document.addEventListener("keypress", function (event) {
         box.style.backgroundColor = "orange";
     }
 })
-
