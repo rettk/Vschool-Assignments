@@ -75,39 +75,51 @@ var readLine = require("readline-sync")
 
 //personal stats
 
-var hp = 100;
+let hp = 100;
 
-var items = ["Potion","Cat","Dog"];
+let items = [];  //potential items: heal potion, status potion, 
 
-var weapons = [];
+let weapons = [];
 
-var status = [];
+let status = [];
 
-var enemyKills = [0];
+let enemyKills = 0;
+
+var name = readLine.question(" What is your name?")
+
+
+// INSERT WHILE LOOP  - while HP > 0, otherwise die.
+while (hp > 0) {
+    decide()
+}
+
+console.log("You have dieeeeeed foooool!!!!")
+
+
 
 
 // decide function for navigating world
 
-function decide (){
+function decide() {
     const pickAction = readLine.keyIn('(w) for walk, (i) for inventory/status')
     console.log(pickAction)
-    if(pickAction === "w"){
+    if (pickAction === "w") {
         fight()
-    }else  if (pickAction === "i"){
+    } else if (pickAction === "i") {
         inventory()
     }
 }
 
 // inventory function to show status and item list
 
-function inventory (){
+function inventory() {
     console.log("Hit Points: " + hp)
     console.log("Items: " + items)
     console.log("Weapons: " + weapons)
     console.log("Status: " + status)
     console.log("Enemy Kills: " + enemyKills)
     var index = readLine.keyInSelect(items, 'Use item?');
-    console.log (index)
+    console.log(index)
 }
 
 
@@ -119,11 +131,11 @@ function inventory (){
 
 //game variables
 
-var name = readLine.question(" What is your name?")
 
-decide ()
 
-var random = Math.floor(Math.random() * 100);
+
+
+let random = Math.floor(Math.random() * 100);
 
 
 
@@ -140,10 +152,6 @@ var random = Math.floor(Math.random() * 100);
 
 
 
-// INSERT WHILE LOOP  - while HP > 0, otherwise die.
-while (hp<0){
-    decide();
-}
 
 
 

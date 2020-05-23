@@ -15,10 +15,12 @@ form.addEventListener("submit", function (event) {
     // make the variable equal to the input data 
     listPush.textContent = listItem
     // append the text content data to the document in the right place
+    listPush.appendChild(editButton)
+    listPush.appendChild(xButton)
     document.getElementById("list").appendChild(listPush)
-    document.getElementById("list").appendChild(editButton)
-    document.getElementById("list").appendChild(xButton)
-    xButton.addEventListener
+    xButton.addEventListener("click", function(){
+        document.getElementById("list").removeChild(listPush)
+    })
     // option 2 for this would also work: 
     // document.getElementsByTagName("ul")[0].append(listPush)
 
