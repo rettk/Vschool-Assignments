@@ -57,6 +57,8 @@ var readLine = require("readline-sync")
 
 //personal stats
 
+let winGame = false
+
 let hp = 100;
 
 let items = ["Backpack"];  //potential items: heal potion, status potion, 
@@ -86,7 +88,7 @@ let defenseModifier = 0
 let damageModifier = 0
 
 var name = readLine.question(" What is your name?")
-console.log("Greetings " + name + ", you are about to embark on a perilous journey. If you can kill 10 of the Demon Lord's minions, you may attack the Demon Lord himself.")
+console.log("Greetings " + name + ", you are about to embark on a perilous journey. If you can kill 20 of the Demon Lord's minions, you may attack the Demon Lord himself.")
 
 
 //enemies
@@ -99,7 +101,7 @@ let enemies = [{
     name: "Giant Rat",
     text: "A mangy 3-foot-long rat with huge fangs approaches you...",
     hp: 20,
-    treasureChance: 30,
+    treasureChance: 70,
     tBonus: 0,
     damage: 10,
 
@@ -108,7 +110,7 @@ let enemies = [{
     name: "Goblin",
     text: "A little goblin with a club approaches you...",
     hp: 30,
-    treasureChance: 55,
+    treasureChance: 75,
     tBonus: 10,
     damage: 15,
 },
@@ -116,17 +118,17 @@ let enemies = [{
     name: "Ogre",
     text: "A medium-size ogre with a rusty machete approaches you...",
     hp: 65,
-    treasureChance: 70,
+    treasureChance: 80,
     tBonus: 15,
-    damage: 30,
+    damage: 26,
 },
 {
     name: "Chimaera",
     text: "A strange, large creature with two heads approaches you...",
     hp: 95,
-    treasureChance: 80,
+    treasureChance: 85,
     tBonus: 25,
-    damage: 40,
+    damage: 30,
 },
 {
     name: "Dragon",
@@ -134,7 +136,7 @@ let enemies = [{
     hp: 110,
     treasureChance: 100,
     tBonus: 35,
-    damage: 50,
+    damage: 40,
 }
 ]
 
@@ -212,7 +214,11 @@ function fight() {
                 let defenseRoll = Math.floor(Math.random() * 100)
                 if (defenseRoll > (defensePower + defenseModifier)) {
                     console.log("It attacks back and hits you for " + (currentEnemy.damage - damageModifier) + " damage!!")
-                    hp = hp -= (currentEnemy.damage - damageModifier)
+                    if (currentEnemy.damage - damageModifier < 1) {
+                        console.log("Your armor prevents any damage!")
+                    } else {
+                        hp = hp -= (currentEnemy.damage - damageModifier)
+                    }
                     if (hp < 1) {
                         console.log("ouuuch!!!")
                         break
@@ -225,7 +231,11 @@ function fight() {
                 let defenseRoll = Math.floor(Math.random() * 100)
                 if (defenseRoll > (defensePower + defenseModifier)) {
                     console.log("It attacks back and hits you for " + (currentEnemy.damage - damageModifier) + " damage!!")
-                    hp = hp -= (currentEnemy.damage - damageModifier)
+                    if (currentEnemy.damage - damageModifier < 1) {
+                        console.log("Your armor prevents any damage!")
+                    } else {
+                        hp = hp -= (currentEnemy.damage - damageModifier)
+                    }
                     if (hp < 1) {
                         console.log("ouuuch!!!")
                         break
@@ -243,25 +253,93 @@ function fight() {
 
 function demonLord() {
     console.log("Okay " + name + ", you enter the Demon Lord's chamber!")
+    runStatus = false
     theBoss = {
-        name: "Chimaera",
-        text: "A strange, large creature with two heads approaches you...",
-        hp: 95,
+        name: "Demon Lord",
+        text: "You approach the Demon Lord...",
+        hp: 180,
         treasureChance: 80,
         tBonus: 25,
-        damage: 40,
+        damage: 60,
     }
-    
+    while (theBoss.hp > 0 && runStatus === false) {
+        const pickAction = readLine.keyIn('(i) for inventory/status,(e) for enemy status, (f) to fight, (r) to attempt to run')
+        console.log(pickAction)
+        if (pickAction === "r") {
+            console.log("You attempt to run away.....")
+            let runAttempt = Math.floor(Math.random() * 100)
+            if (runAttempt < 40) {
+                console.log('.....and you escape!')
+                runStatus = true
+            } else if (runAttempt >= 40) {
+                console.log("....you are blocked and take a hit from the Demon Lord!")
+                console.log("You lose " + .5 * theBoss.damage + " hit points.")
+                hp = hp -= .5 * theBoss.damage
+                if (hp < 1) {
+                    console.log("ouuuch!!!")
+                    break
+                }
+            }
+        } else if (pickAction === "e") {
+            console.log(theBoss.name)
+            console.log("Current Hit Points " + theBoss.hp)
+        } else if (pickAction === "i") {
+            inventory()
+        } else if (pickAction === "f") {
+            console.log("You attack and....")
+            let attackRoll = Math.floor(Math.random() * 100)
+            if (attackRoll < (attackPower + attackModifier)) {
+                console.log("You hit it and deal " + (attackDamage + weaponDamage) + " damage!!!")
+                theBoss.hp = theBoss.hp -= (attackDamage + weaponDamage)
+                if (theBoss.hp < 1) {
+                    enemyKills = enemyKills += 1
+                    console.log("You killed the Demon Lord!!!")
+                    console.log("You have freed the earth from his evil presence forever")
+                    console.log("You, " + name + ", are the hero of the world.")
+                    console.log("THE END")
+                    winGame = true
+                    break
+                }
+                let defenseRoll = Math.floor(Math.random() * 100)
+                if (defenseRoll > (defensePower + defenseModifier)) {
+                    console.log("He attacks back and hits you for " + (theBoss.damage - damageModifier) + " damage!!")
+                    hp = hp -= (theBoss.damage - damageModifier)
+                    if (hp < 1) {
+                        console.log("ouuuch!!!")
+                        break
+                    }
+                } else {
+                    console.log("He swings at you and misses you!")
+                }
+            } else {
+                console.log("You missed!!")
+                let defenseRoll = Math.floor(Math.random() * 100)
+                if (defenseRoll > (defensePower + defenseModifier)) {
+                    console.log("It attacks back and hits you for " + (theBoss.damage - damageModifier) + " damage!!")
+                    hp = hp -= (theBoss.damage - damageModifier)
+                    if (hp < 1) {
+                        console.log("ouuuch!!!")
+                        break
+                    }
+                } else {
+                    console.log("He swings at you and misses you!")
+                }
+            }
+        }
+    }
 }
+
 
 
 // INSERT WHILE LOOP  - while HP > 0, otherwise die.
-while (hp > 1) {
+while (hp > 1 && winGame === false) {
     decide()
 }
+if (hp < 1) {
+    console.log(name + ", you have dieeeeeed foooool!!!!")
+    console.log("GAME OVER")
+}
 
-console.log(name + ", you have dieeeeeed foooool!!!!")
-console.log("GAME OVER")
 
 
 
@@ -269,7 +347,7 @@ console.log("GAME OVER")
 // decide function for navigating world
 
 function decide() {
-    if (enemyKills < 10) {
+    if (enemyKills < 20) {
         const pickAction = readLine.keyIn('You are at a road. Pick an action: (w) for walk, (i) for inventory/status')
         console.log(pickAction)
         if (pickAction === "w") {
@@ -337,17 +415,17 @@ function find() {
         console.log("...set of Magic Armor!")
         armor = "Magic Armor"
         defenseModifier = 25
-        damageModifier = 15
-    } else if (treasureRoll > 0 && treasureRoll <= 7) {
+        damageModifier = 20
+    } else if (treasureRoll > 0 && treasureRoll <= 10) {
         console.log("...set of Heavy Armor!")
         if (armor === "Magic Armor") {
             console.log("But you already have better armor so you throw it away.")
         } else {
             armor = "Heavy Armor"
             defenseModifier = 15
-            damageModifier = 10
+            damageModifier = 15
         }
-    } else if (treasureRoll > 7 && treasureRoll <= 17) {
+    } else if (treasureRoll > 10 && treasureRoll <= 20) {
         console.log("...majestic Broadsword!")
         if (weapon === "Magic Sword") {
             console.log("But you already have a better weapon so you throw it away.")
@@ -356,16 +434,16 @@ function find() {
             attackModifier = 20
             weaponDamage = 20
         }
-    } else if (treasureRoll > 17 && treasureRoll <= 27) {
+    } else if (treasureRoll > 20 && treasureRoll <= 35) {
         console.log("...set of Light Armor!")
         if (armor === "Heavy Armor" || armor === "Magic Armor") {
             console.log("But you already have better armor so you throw it away.")
         } else {
             armor = "Light Armor"
             defenseModifier = 10
-            damageModifier = 5
+            damageModifier = 10
         }
-    } else if (treasureRoll > 27 && treasureRoll <= 57) {
+    } else if (treasureRoll > 35 && treasureRoll <= 50) {
         console.log("...rusty sword!")
         if (weapon === "Magic Sword" || weapon === "Broadsword") {
             console.log("But you already have a better weapon so you throw it away.")
@@ -374,7 +452,7 @@ function find() {
             attackModifier = 15
             weaponDamage = 10
         }
-    } else if (treasureRoll > 57 && treasureRoll <= 100) {
+    } else if (treasureRoll > 50 && treasureRoll <= 100) {
         console.log("...healing potion!")
         items.push("Healing Potion")
     }
