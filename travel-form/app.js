@@ -17,6 +17,4 @@ form.addEventListener("submit", (event) => {
         "\nDestination: " + form.destination.value + "\nDietary Restrictions: " + dietRestrictions)
 
 
-
 })
-

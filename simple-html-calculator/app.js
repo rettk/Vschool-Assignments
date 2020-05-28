@@ -10,7 +10,7 @@ addForm.addEventListener("submit", function (event) {
 
     const addPaste = document.createElement("h1")
 
-    let addedAnswer = addFirst + addSecond
+    let addedAnswer = Number(addFirst) + Number(addSecond)
 
     addPaste.textContent = "Added Numbers equal " + addedAnswer
 

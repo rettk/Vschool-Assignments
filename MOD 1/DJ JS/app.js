@@ -32,7 +32,8 @@ document.addEventListener("keypress", function (event) {
     color = event.which;
     console.log(color);
     if (color === 114) {
-        box.style.backgroundColor = "red";}
+        box.style.backgroundColor = "red";
+    }
     if (color === 98) {
         box.style.backgroundColor = "blue";
     }
