@@ -44,11 +44,27 @@ var peopleArray = [
 // each name and age is embedded in a string that looks like an HTML <li> element.
 
 function sortedOfAge(arr) {
-    return arr.sort(function (a,b) {
-        a.lastName - b.lastName
+    arr.sort(function (a, b) {
+        if (a.lastName < b.lastName) {
+            return -1
+        } if (a.lastName > b.lastName) {
+            return 1
+        }
+        return 0
     })
+
+    return arr.reduce(function (final, vbl) {
+        if (vbl.age >= 18) {
+            final.push(JSON.stringify("<li>" + vbl.firstName + " " + vbl.lastName + " is " + vbl.age + "</li>"))
+        }
+        return final
+    }, [])
 }
 
+
+// final.push(JSON.stringify(vbl))
+
+// return final.firstName + " " + final.lastName + " is " + final.age
 
 console.log(sortedOfAge(peopleArray));
 
