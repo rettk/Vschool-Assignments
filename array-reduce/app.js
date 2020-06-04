@@ -12,7 +12,7 @@ console.log(total([1, 2, 3])); // 6
 
 function stringConcat(arr) {
     return arr.reduce(function (final, num) {
-        return JSON.stringify(num)
+        return final + JSON.stringify(num)
     }, '')
 }
 

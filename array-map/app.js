@@ -16,8 +16,14 @@ console.log(doubleNumbers([2, 5, 100])); // [4, 10, 200]
 
 //   2) Take an array of numbers and make them strings
 
-function stringItUp(arr) {
-    return arr.map(function (num) {
+// function stringItUp(arr) {
+//     return arr.map(function (num) {
+//         return JSON.stringify(num)
+//     })
+// }
+
+stringItUp = (arr) => {
+    return arr.map((num) => {
         return JSON.stringify(num)
     })
 }
@@ -29,7 +35,7 @@ console.log(stringItUp([2, 5, 100])); // ["2", "5", "100"]
 
 function capitalizeNames(arr) {
     return arr.map(function (num) {
-        return num.charAt(0).toUpperCase() + num.slice(1)
+        return num.charAt(0).toUpperCase() + num.slice(1).toLowerCase()
     })
 }
 

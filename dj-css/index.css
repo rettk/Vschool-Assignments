@@ -1,0 +1,88 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+
+#container {
+    margin-top: 100px;
+    display: flex;
+    border: black;
+    justify-content: space-evenly;
+}
+
+#b1 {
+    height: 100px;
+    width: 100px;
+    background-color: red;
+    border-color: black;
+    transition: margin 1s, color 1s, font-size 1s;
+    }
+
+#b1:hover {
+    height: 200px;
+    width: 200px;
+    margin: 50px;
+    background-image: url("hi.jpeg");
+    background-size: 99%;
+    color: white;
+    font-size: 200%;
+}
+
+#b2 {
+    height: 100px;
+    width: 100px;
+    background-color: blue;
+    border-width: 2px;
+    border-color: black;
+    border-style: solid;
+    transition: border 1s;
+    }
+
+#b2:hover{
+    background-image: repeating-linear-gradient(red, yellow 10%, green 20%);
+    border-style: dotted;
+    border-width: 15px;
+    border-color: greenyellow;
+    font-size: larger;
+}
+
+#b3 {
+    height: 100px;
+    width: 100px;
+    background-color: green;
+    border-color: black;
+    transition: position 1s;
+}
+
+#b3:hover{
+    position: fixed;
+}
+
+#b4 {
+    height: 100px;
+    width: 100px;
+    background-color: yellow;
+    border-color: black;
+}
+
+#b4:hover {
+    background-image: url("whoa.jpeg");
+    background-size: 99%;
+    font-size: 40%;
+}
+
+#b5 {
+    height: 100px;
+    width: 100px;
+    background-color: orange;
+    border-color: black;
+}
+
+#b6 {
+    height: 100px;
+    width: 100px;
+    background-color: purple;
+    border-color: black;
+}
+
