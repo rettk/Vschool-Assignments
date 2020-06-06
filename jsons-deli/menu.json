@@ -1,0 +1,98 @@
+{
+    "Appetizers": [
+        {
+            "name": "Chicken Fingers",
+            "ingredients": [
+                "Chicken",
+                "Breading",
+                "Sauce"
+            ],
+            "description": "Delectable breaded chicken bites"
+        },
+        {
+            "name": "Tomato Soup",
+            "ingredients": [
+                "Tomato Soup",
+                "Salt",
+                "Cream",
+                "Basil"
+            ],
+            "description": "Scrumptious tomato soup"
+        }
+    ],
+    "Cold Sandwiches": [
+        {
+            "name": "Turkey Sandwich",
+            "ingredients": [
+                "Turkey",
+                "Lettuce",
+                "Bread"
+            ],
+            "description": "Yummy turkey sandwich"
+        },
+        {
+            "name": "Ham Sandwich",
+            "ingredients": [
+                "Ham",
+                "Bread",
+                "Cheese"
+            ],
+            "description": "Great ham sandwich"
+        }
+    ],
+    "Hot Sandwiches": [
+        {
+            "name": "Hot Pastrami",
+            "ingredients": [
+                "Pastrami",
+                "Cheese",
+                "Bread"
+            ],
+            "description": "Steamy hot pastrami sandwich"
+        },
+        {
+            "name": "French Dip Sandwich",
+            "ingredients": [
+                "Beef",
+                "Bread",
+                "Au Jus"
+            ],
+            "description": "A nice, hot, french beef sandwich with au jus"
+        }
+    ],
+    "Desserts": [
+        {
+            "name": "Vanilla Ice Cream",
+            "ingredients": [
+                "Vanilla Ice Cream"
+            ],
+            "description": "Smooth, creamy vanilla ice cream"
+        },
+        {
+            "name": "Chocolate Cake",
+            "ingredients": [
+                "Chocolate Cake",
+                "Chocolate Syrup Topping"
+            ],
+            "description": "Delicious hot chocolate cake"
+        }
+    ],
+    "Drinks": [
+        {
+            "name": "Coca-cola",
+            "ingredients": [
+                "Secret Ingredient 1",
+                "Secret Ingredient 2"
+            ],
+            "description": "Your famous coca-cola soft drink"
+        },
+        {
+            "name": "Sprite",
+            "ingredients": [
+                "Lemon Lime flavoring",
+                "Soda Water"
+            ],
+            "description": "Lemon-lime famous sprite soda"
+        }
+    ]
+}
