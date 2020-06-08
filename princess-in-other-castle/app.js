@@ -1,16 +1,16 @@
 class Player {
-    constructor(name, status, hasStar, gameActive) {
+    constructor(name, status = "Small", hasStar = false, gameActive = true, coinCount = 0) {
         // { name = "name", type = 0, status = ("Powered Up", "Big", "Small", "Dead"), hasStar = false, setName = ("Mario", "Luigi"), gotHit, gotPowerup, gameActive = true }  ????
         this.name = name
-        this.status = "Small"
-        this.hasStar = false
-        this.gameActive = true
-        this.coinCount = 0
+        this.status = status
+        this.hasStar = hasStar
+        this.gameActive = gameActive
+        this.coinCount = coinCount
     }
 
 
-    setName() {
-        this.name = "Luigi"
+    setName(name) {
+        this.name = name
     }
 
     addCoin() {
@@ -31,13 +31,25 @@ class Player {
         }
     }
 
+    starPower() {
+        this.hasStar = true
+        setTimeout(() => {
+            this.hasStar = false
+            console.log("Your star wore off!")
+        }, 5000)
+    }
+
+
     gotPowerup() {
         if (this.status === "Small") {
             this.status = "Big"
         } else if (this.status === "Big") {
             this.status = "Powered Up"
-        } else if (this.status === "Powered Up") {
-            this.hasStar = true
+        } else if (this.status === "Powered Up" && this.hasStar === false) {
+            console.log("You got a star!!!")
+            this.starPower()
+        } else if (this.status === "Powered Up" && this.hasStar === true) {
+            console.log("You are already at max power!")
         }
     }
 
@@ -51,7 +63,7 @@ class Player {
 
 
 const test = new Player()
-
+test.setName("Mario")
 
 
 console.log(test)
@@ -70,30 +82,30 @@ const getRandomArbitrary = (max) => {
 
 let intervalID
 
-const turn = (Player) => {
-    if (!Player.gameActive) {
-        clearInterval(intervalID)
+const turn = (play) => {
+    if (!play.gameActive) {
+        return clearInterval(intervalID)
     }
     let roll = getRandomArbitrary(3)
     if (roll === 0) {
         console.log(`Ouch you got hit!`)
-        Player.gotHit()
-        Player.print()
+        play.gotHit()
+        play.print()
     } else if (roll === 1) {
         console.log(`You got a powerup!`)
-        Player.gotPowerup()
-        Player.print()
+        play.gotPowerup()
+        play.print()
     } else if (roll === 2) {
         console.log(`Ding! A coin!`)
-        Player.addCoin()
-        Player.print()
+        play.addCoin()
+        play.print()
     }
 }
 
 
 
-const game = (Player) => {
-    intervalID = setInterval(() => turn(Player), 1500) //remember no parantheses on function similar to addEventListener
+const game = (time) => {
+    intervalID = setInterval(() => turn(time), 1500) //remember no parantheses on function similar to addEventListener
 }
 
 // btn.addEventListener("click", () =>  myFunction(data))
