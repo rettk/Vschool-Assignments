@@ -1,0 +1,21 @@
+.place {
+    color: red;
+}
+
+.placewarm {
+    color: rgb(0, 255, 34);
+}
+
+.card {
+    display: flex;
+    height: 200px;
+    border: 2px solid green;
+    background-color: aqua;
+}
+
+.cardwarm {
+    display: flex;
+    height: 200px;
+    border: 2px solid green;
+    background-color: red;
+}
