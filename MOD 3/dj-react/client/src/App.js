@@ -9,6 +9,34 @@ class App extends React.Component {
         this.state = {
             colors: ["white", "white", "white", "white"]
         }
+        this.allWhite = this.allWhite.bind(this)
+        this.allBlack = this.allBlack.bind(this)
+        this.topPurple = this.topPurple.bind(this)
+        this.leftBlue = this.leftBlue.bind(this)
+        this.rightBlue = this.rightBlue.bind(this)
+    }
+
+    allBlack() {
+        this.setState({ colors: ["black", "black", "black", "black"] })
+    }
+
+    allWhite() {
+        this.setState({ colors: ["white", "white", "white", "white"] })
+    }
+
+    topPurple() {
+        let newArray = this.state.colors.splice(0, 2, "purple", "purple")
+        this.setState({ newArray })
+    }
+
+    leftBlue() {
+        let newArray = this.state.colors.splice(2, 1, "blue")
+        this.setState({ newArray })
+    }
+
+    rightBlue() {
+        let newArray = this.state.colors.splice(3, 1, "blue")
+        this.setState({ newArray })
     }
 
     render() {
@@ -30,22 +58,23 @@ class App extends React.Component {
                 </div>
                 <div id="buttonBox">
                     <div class="button">
-                        <button onClick={this.state.colors[0] === "white" ?
+                        <button onClick={this.state.colors[0] === "white" ? this.allBlack : this.allWhite}>Black/White</button>
+                        {/* <button onClick={this.state.colors[0] === "white" ?
                             setState({ colors: ["black", "black", "black", "black"] }) :
                             setState({ colors: ["white", "white", "white", "white"] })
-                        }>Black/White</button>
+                        }>Black/White</button> */}
                     </div>
                     <div class="button">
-                        <button>Press Me</button>
+                        <button onClick={this.topPurple}>Top Purple</button>
                     </div>
                     <div class="button">
-                        <button>Press Me</button>
+                        <button onClick={this.leftBlue}>Left Blue</button>
                     </div>
                     <div class="button">
-                        <button>Press Me</button>
+                        <button onClick={this.rightBlue}>Right Blue</button>
                     </div>
                 </div>
-            </div>
+            </div >
         )
     }
 

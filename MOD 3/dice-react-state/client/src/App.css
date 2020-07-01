@@ -1,0 +1,14 @@
+#container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+
+}
+
+.die {
+    height: 100px;
+    width: 100px;
+    border-style: solid;
+    font-size: x-large;
+    text-align: center;
+
+}
