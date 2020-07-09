@@ -10,13 +10,14 @@ class App extends React.Component {
             colors: ["white", "white", "white", "white"]
         }
         this.allWhite = this.allWhite.bind(this)
-        this.allBlack = this.allBlack.bind(this)
+
         this.topPurple = this.topPurple.bind(this)
         this.leftBlue = this.leftBlue.bind(this)
         this.rightBlue = this.rightBlue.bind(this)
     }
 
-    allBlack() {
+    // below function syntax to negate needing to bind. (Notice no binding above)
+    allBlack = () => {
         this.setState({ colors: ["black", "black", "black", "black"] })
     }
 

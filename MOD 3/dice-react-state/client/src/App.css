@@ -10,5 +10,15 @@
     border-style: solid;
     font-size: x-large;
     text-align: center;
-
+    
 }
+.die-hold {
+    height: 100px;
+    width: 100px;
+    border-style: solid;
+    font-size: x-large;
+    text-align: center;
+    background-color: darkgrey;
+    
+}
+
