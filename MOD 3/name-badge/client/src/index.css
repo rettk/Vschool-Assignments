@@ -1,0 +1,13 @@
+#button {
+    text-align: center;
+}
+
+#container {
+    border: 3px;
+    border-style: solid;
+}
+
+#badgetext {
+    border: 3px;
+    border-style: solid;
+}
