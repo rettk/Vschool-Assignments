@@ -19,16 +19,21 @@ class App extends React.Component {
             }
 
         }
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
+
+        // this.handleChange = this.handleChange.bind(this)
+        // this.handleSubmit = this.handleSubmit.bind(this)
+        //don't need to bind these if you use the ES6 arrow function style below: i.e. handleSubmit = () => { }
+
+
     }
 
     handleChange = (event) => {
         const { name, value } = event.target
-        this.setState({
-            temporary: { [name]: value }
+        this.setState(prevState => {
+            return { temporary: { ...prevState.temporary, [name]: value } }
         })
     }
+
 
     handleSubmit = (event) => {
         event.preventDefault()
@@ -49,7 +54,7 @@ class App extends React.Component {
                 textArea: ""
             }
         })
-        console.log(this.state.current)
+        // console.log(this.state.current)
     }
 
     render() {
