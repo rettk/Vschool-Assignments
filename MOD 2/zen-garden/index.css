@@ -5,9 +5,12 @@
 
 #footer-two {
     grid-column: 1 / 3;
+    background-color: rosybrown
 }
+
 #footer-one {
     grid-column: 1 / 3;
+    background-color: rosybrown
 }
 
 @media (max-width: 650px) {
@@ -15,12 +18,42 @@
         grid-template-columns: 1fr;
     }
     #side-authors {
-        grid-row: 8/9;
+        grid-row: 8 / 9;
     }
     #footer-two {
         grid-column: 1 / 2;
     }
     #footer-one {
         grid-column: 1 / 2;
+    }
 }
+
+#header {
+    background-image: url("http://www.csszengarden.com/214/huntington.jpg");
+    background-size: cover;
+    height: 200px;
+}
+
+#design {
+    background-color: royalblue
+}
+
+#side-authors {
+    background-color: yellowgreen
+}
+
+#side-options {
+    background-color: orchid
+}
+
+#body-one {
+    background-color: burlywood
+}
+
+#body-two {
+    background-color: burlywood
+}
+
+#body-three {
+    background-color: burlywood
 }

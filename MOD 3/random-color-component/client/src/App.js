@@ -23,7 +23,20 @@ class App extends React.Component {
     }
 
 
-    componentDidUpdate() {
+    // componentDidUpdate() {
+    //     fetch("http://www.colr.org/json/color/random")
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             this.setState({
+    //                 stuff: data
+    //             })
+    //         })
+    //         .catch(error => console.log(error))
+    // }
+
+
+
+    refreshPage = () => {
         fetch("http://www.colr.org/json/color/random")
             .then(response => response.json())
             .then(data => {
@@ -31,14 +44,7 @@ class App extends React.Component {
                     stuff: data
                 })
             })
-            .catch(error => console.log(error))
     }
-
-
-
-    // refreshPage = () => {
-    //     reload()
-    // }
 
 
 
@@ -48,9 +54,9 @@ class App extends React.Component {
             <div>
                 <div><RandomColor key={this.state.stuff.colors[0].id} color={this.state.stuff.colors[0].hex} /></div>
                 <br />
-                <form>
-                    <button onClick={this.refreshPage}>New Color</button>
-                </form>
+
+                <button onClick={this.refreshPage}>New Color</button>
+
             </div>
         )
     }
