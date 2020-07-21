@@ -8,7 +8,13 @@ function App() {
             {({ theme, changeTheme }) => (
 
                 <div>
-                    <navbar className={`${theme}-style`}>navbar</navbar>
+                    <navbar id="navbar" className={`navbar-${theme}-style`}>
+                        <div>Home</div>
+                        <div>Menu</div>
+                        <div>Help</div>
+
+
+                    </navbar>
                     <br />
                     <br />
 
@@ -17,7 +23,7 @@ function App() {
                         <br />
                         <br />
 
-                        <button onClick={changeTheme}>Press Now!</button>
+                        <button className={`button-${theme}-style`} onClick={changeTheme}>Press Now!</button>
                     </main>
                     <br />
                     <br />

@@ -6,3 +6,28 @@
     background-color: darkslategray;
     color: whitesmoke
 }
+
+.navbar-light-style {
+    background-color: lightcyan;
+    color: seagreen;
+}
+
+.navbar-dark-style {
+    background-color: dimgrey;
+    color: rgb(160, 255, 239);
+}
+
+#navbar {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.button-light-style {
+background-color: pink;
+
+}
+
+.button-dark-style {
+    background-color: red;
+    color: springgreen;
+}
