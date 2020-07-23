@@ -18,12 +18,14 @@ function App() {
                     <br />
                     <br />
 
-                    <main style={{ textAlign: "center" }} className={theme + "-style"}>Press the Button to Change the background!
+                    <main style={{ textAlign: "center" }} className={theme + "-style"}>
                 <br />
+                        <h3>Press the Button to Change the background!</h3>
                         <br />
                         <br />
 
                         <button className={`button-${theme}-style`} onClick={changeTheme}>Press Now!</button>
+                        <br />
                     </main>
                     <br />
                     <br />
