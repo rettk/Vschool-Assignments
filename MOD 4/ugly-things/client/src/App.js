@@ -4,7 +4,8 @@ import React, { useState } from "react"
 
 function App() {
 
-    const [inputData, setInputData] = useState([{ title: "", url: "", description: "" }])
+    const [inputData, setInputData] = useState({ title: "", url: "", description: "" })
+    // const [title, setTitle] = useState("")  -----  this is another way to build this
     const [finalData, setFinalData] = useState([])
 
     function handleChange(event) {
@@ -15,7 +16,7 @@ function App() {
     function handleSubmit(event) {
         event.preventDefault()
         setFinalData(prevFinalData => [...prevFinalData, inputData])
-        setInputData([{ title: "", url: "", description: "" }])
+        setInputData({ title: "", url: "", description: "" })
     }
 
     const displayList = finalData.map(item => <div>
@@ -35,8 +36,10 @@ function App() {
                 <div>
                     <input
                         placeholder="Title"
+                        // value={title}
                         value={inputData.title}
                         name="title"
+                        // onChange={(e)=>setTitle(e.target.value)}
                         onChange={handleChange}
                     >
 

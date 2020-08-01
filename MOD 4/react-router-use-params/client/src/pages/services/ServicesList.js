@@ -1,7 +1,7 @@
 import React from "react"
 import servicesData from "./servicesData"
 import { Link, Switch, Route } from "react-router-dom"
-import ServiceDetail from "./ServiceDetail"
+// import ServiceDetail from "./ServiceDetail"
 
 function ServicesList() {
     const services = servicesData.map(service => (
@@ -9,17 +9,12 @@ function ServicesList() {
     ))
     return (
         <div>
-            <div>
-                <h1>Services List Page</h1>
-                {services}
-            </div>
 
-            <Switch>
-                <Route path="/services/:serviceId">
-                    <ServiceDetail />
-                </Route>
+            <h1>Services List Page</h1>
+            {services}
 
-            </Switch>
+
+
 
         </div>
     )
