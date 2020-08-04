@@ -1,0 +1,39 @@
+axios.get('/url', {
+    headers: {
+      X-RapidAPI-Key: 12345
+    }
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+
+
+
+  Get - https://astrology-horoscope.p.rapidapi.com/zodiac_astrology/details_requirements/
+
+
+
+X-RapidAPI-Key
+Key:  a2d06be477msh1655c96c95fc081p184686jsn60d8d9d43b9b
+
+
+
+post - https://astrology-horoscope.p.rapidapi.com/zodiac_astrology/result
+
+req  
+    mystic_dob     1987-05-21
+    mystic_name     Bob
+
+opt
+    v4          json
+
+    if you want json keep it blank.  if you want html send json in field. (so keep blank)
+
+
+
+get for simple 12 query = https://www.horoscopes-and-astrology.com/json
+

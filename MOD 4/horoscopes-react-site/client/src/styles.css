@@ -1,0 +1,14 @@
+.main {
+    display: flex;
+    justify-content: center;
+}
+
+.signs {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.space {
+    height: 25px
+}
