@@ -12,3 +12,7 @@
 .space {
     height: 25px
 }
+
+.vertical-space {
+    margin-top: 15px;
+}

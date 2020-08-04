@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react"
+// import { Link, Route, Switch } from "react-router-dom"
 import axios from "axios"
-import { Switch, Route, Link } from "react-router-dom"
-import Horoscope from "./Horoscope"
-// import Home from "./Home"
 
-function App() {
+function Home() {
     // only use number to display if there are limited licenses
     //     const [number, setNumber] = useState()  
     const [sign, setSign] = useState()
@@ -37,13 +35,9 @@ function App() {
         // console.log(sign)
     }
 
-    function capitalize(string) {
-        const nameCapitalized = string.charAt(0).toUpperCase() + string.slice(1)
-        return(nameCapitalized)
-    }
-
     console.log(sign)
     console.log(signData)
+
     return (
         <div>
             <div className="main">
@@ -73,8 +67,8 @@ function App() {
                     </h3><input style={{ display: sign === undefined ? "inline" : "none" }} type="date"></input>
             </div>
             <div className="main">
-                <h2>
-                    {sign === undefined ? "" : capitalize(sign)}
+                <h2 style={{ display: sign === undefined ? "none" : "inline" }}>
+                    {sign}
                 </h2>
             </div>
             <div className="space"></div>
@@ -82,25 +76,15 @@ function App() {
                 <text>{signData.description}</text>
             </div>
             <div className="main">
-                <Link to="/horoscope-info" className="vertical-space" style={{ display: sign === undefined ? "none" : "inline" }}>
+                {/* <Link to="/horoscope-info" className="vertical-space" style={{ display: sign === undefined ? "none" : "inline" }}>
                     Find out more about your sign!
-                    </Link>
+                    </Link> */}
             </div>
-            <Switch>
-                {/* <Route path="/">
-                    {/* <App /> */}
-                {/* </Route> */} 
-                <Route path="/horoscope-info">
-                    <Horoscope description={signData.description} color={signData.color} />
-                </Route>
-            </Switch>
         </div>
-
-
     )
-
 
 }
 
 
-export default App
+
+export default Home

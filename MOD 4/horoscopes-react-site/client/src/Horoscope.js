@@ -1,10 +1,15 @@
 import React from "react"
 
-function Horoscope (){
+function Horoscope(props) {
 
-return(
-    <h1>test</h1>
-)
+    return (
+        <div>
+            <h1>Your lucky color: {props.color}</h1>
+            <span style={{ backgroundColor: props.color }}></span>
+
+            <div>{props.description}</div>
+        </div>
+    )
 
 }
 
