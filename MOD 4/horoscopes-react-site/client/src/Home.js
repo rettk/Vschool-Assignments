@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react"
 import { Link } from "react-router-dom"
 import axios from "axios"
 import { SignContext } from "./signContext"
-import Horoscope from "./Horoscope"
+
 
 function Home() {
 
@@ -65,19 +65,25 @@ function Home() {
     }
 
     useEffect(() => {
-
-        axios(config2)
-            .then(response => {
-                const stuff2 = response.data.data
-                setSignData2(stuff2)
-            })
-
-            .catch(error => {
-                console.log(error)
-            })
         console.log(birthDate)
+        if (!birthDate) {
+            return
+        } else {
+
+            axios(config2)
+                .then(response => {
+                    const stuff2 = response.data.data
+                    setSignData2(stuff2)
+                })
+
+                .catch(error => {
+                    console.log(error)
+                })
+            console.log(birthDate)
+        }
     }, [birthDate]
     )
+
 
 
 

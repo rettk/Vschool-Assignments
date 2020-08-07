@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react"
 import { SignContext } from "./signContext"
 import { Link } from "react-router-dom"
-import axios from "axios"
+
 
 function Horoscope() {
 
@@ -55,6 +55,10 @@ function Horoscope() {
         return (nameCapitalized)
     }
 
+    const generalTraits =
+        signData2["Traits"] ? signData2["Traits"]["General Traits"].split("<br><br>") : null
+
+
 
     return (
         <div>
@@ -72,8 +76,8 @@ function Horoscope() {
             <div>{signData.description}</div>
             <h2>Lucky color: {signData.color}</h2>
             <span style={{ backgroundColor: signData.color }}></span>
-            <h2>Birthstone: {signData2["Lucky Charm"]["Birth Stone"]}</h2>
-            <h2>Traits:</h2> <text>{signData2["Traits"]["General Traits"]}</text>
+            <h2>Birthstone: {signData2["Lucky Charm"] && signData2["Lucky Charm"]["Birth Stone"]}</h2>
+            <h2>Traits:</h2> <text>{generalTraits}</text>
 
         </div >
     )
