@@ -20,6 +20,20 @@ app.post("/", (req, res) => {
     res.send(`${req.body.firstName} has been added for a $${req.body.bountyAmount} bounty.`)
 })
 
+app.delete("/:deleteId", (req, res) => {
+    const deleteIndex = bounties.findIndex((item) => item._id === req.params.deleteId)
+    const nameDeleted = bounties[deleteIndex].firstName
+    bounties.splice(deleteIndex, 1)
+    res.send(`You deleted ${nameDeleted} from the database.`)
+})
+
+app.put("/:updateId", (req, res) => {
+    const updateIndex = bounties.findIndex(item => item._id === req.params.updateId)
+    const updatedBounty = Object.assign(bounties[updateIndex], req.body)
+    res.send(updatedBounty)
+
+})
+
 app.listen(9000, () => {
     console.log("Using port 9000")
 })

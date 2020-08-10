@@ -1,14 +1,19 @@
 const express = require("express")
 const app = express()
 const { v4 } = require("uuid")
+const { doJson, serverAdd } = require("./middleware")
 
 
-app.use(express.json())
+// app.use(express.json())
 
-app.use((req, res, next) => {
-    req.body = {...req.body, add: "by server" }
-    next()
-})
+// app.use((req, res, next) => {
+//     req.body = {...req.body, add: "by server" }
+//     next()
+// })
+
+app.use(doJson)
+app.use(serverAdd)
+
 
 const stuff = [
     {
