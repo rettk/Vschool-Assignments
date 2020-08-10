@@ -29,6 +29,20 @@ tvshowRouter.route("/:tvshowId")
         //condensed!  
         // res.send(tvShows.find(show => show._id === req.params.tvshowId))
     })
+    .delete((req, res) => {
+        const tvshowId = req.params.tvshowId
+        const tvshowIndex = tvShows.findIndex(tvshow => tvshow._id === tvshowId)
+        const namedShow = tvShows[tvshowIndex].title
+        console.log(namedShow)
+        tvShows.splice(tvshowIndex, 1)
+        res.send(`Successfully deleted ${namedShow}!`)
+    })
+    .put((req, res) => {
+        const tvshowId = req.params.tvshowId
+        const tvshowIndex = tvShows.findIndex(tvshow => tvshow._id === tvshowId)
+        const updatedShow = Object.assign(tvShows[tvshowIndex], req.body)
+        res.send(`New data posted: ${tvShows[tvshowIndex].title}`)
+    })
 
 
 module.exports = tvshowRouter
