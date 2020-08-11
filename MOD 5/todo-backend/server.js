@@ -1,8 +1,10 @@
 const express = require("express")
 const app = express()
 const { v4 } = require("uuid")
+const morgan = require("morgan")
 
 app.use(express.json())
+app.use(morgan("dev"))
 
 const todoList = [
     {
