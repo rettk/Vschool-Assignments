@@ -1,8 +1,11 @@
 const express = require("express")
 const app = express()
 const { v4 } = require("uuid")
+const morgan = require("morgan")
+
 
 app.use(express.json())
+app.use(morgan("dev"))
 
 const bounties = [
     { firstName: "Jabba", lastName: "the Hut", living: true, bountyAmount: 500000, type: "Other", _id: v4() },
@@ -17,7 +20,8 @@ app.get("/", (req, res) => {
 app.post("/", (req, res) => {
     req.body._id = v4()
     bounties.push(req.body)
-    res.send(`${req.body.firstName} has been added for a $${req.body.bountyAmount} bounty.`)
+    res.send(req.body)
+    // res.send(`${req.body.firstName} has been added for a $${req.body.bountyAmount} bounty.`)
 })
 
 app.delete("/:deleteId", (req, res) => {
