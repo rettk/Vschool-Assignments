@@ -63,17 +63,22 @@ app.get("/", (req, res) => {
 
 app.get("/:type", (req, res) => {
     console.log(req)
-    const typesReturned = inventoryItems.filter(item => req.params.type === item.type)
+    let typesReturned;
+    if (req.query.name) {
+        type = req.params.type
+        name = req.query.name
+        typesReturned = inventoryItems.filter(item => item.name === name && item.type === type)
+    } else {
+        typesReturned = inventoryItems.filter(item => req.params.type === item.type)
+    }
     res.send(typesReturned)
 })
 
-app.get("/:type/name", (req, res) => {
-    console.log(req)
-    type = req.params.type
-    name = req.query.name
-    typesReturned = inventoryItems.filter(item => item.name === name && item.type === type)
-    res.send(typesReturned)
-})
+// app.get("/:type/name", (req, res) => {
+//     console.log(req)
+
+//     res.send(typesReturned)
+// })
 
 
 app.listen(9000, () => {

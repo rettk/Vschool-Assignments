@@ -11,8 +11,9 @@ const { doJson, serverAdd } = require("./middleware")
 //     next()
 // })
 
+app.use(express.json())
 app.use(doJson)
-app.use(serverAdd)
+
 
 
 const stuff = [
@@ -25,13 +26,21 @@ const stuff = [
         number: 2,
         name: "chicken",
         picture: false
-    },
+    }
 ]
 
 app.get("/", (req, res, next) => {
     res.send(stuff)
-    console.log(req)
+    //console.log(req)
 })
+
+app.post('/', (req, res, next) => {
+    console.log(req.body)
+    req.body._id = v4()
+    next()
+})
+
+app.use(serverAdd)
 
 app.listen(9000, () => {
     console.log("Server running on port 9000")

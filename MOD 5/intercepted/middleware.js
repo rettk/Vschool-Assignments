@@ -1,4 +1,4 @@
-
+const express = require('express')
 
 // app.use(express.json())
 
@@ -13,11 +13,14 @@
 
 
 module.exports = {
-    doJson: (app) => { app.use(express.json()) },
-    serverAdd: (app) => {
-        app.use((req, res, next) => {
+    doJson: (req, res, next) => { 
+        console.log("logged at " + new Date().toLocaleTimeString())
+        next(); 
+    },
+    serverAdd: (req, res, next) => {
+            // console.log(req.body)
             req.body = { ...req.body, add: "by server" }
-            next()
-        })
+            // console.log(req.body)
+            res.send(req.body)
     }
 }

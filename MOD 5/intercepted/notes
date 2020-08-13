@@ -1,0 +1,2 @@
+This project shows how to make a separate .js file that holds the middleware.
+see middleware.js and also how it's imported and used in server.js

@@ -1,0 +1,5 @@
+This project shows how you can use an if/else statement 
+to make a paramater and query blend together.
+
+See server.js 
+    app.get("/:type", etc.......

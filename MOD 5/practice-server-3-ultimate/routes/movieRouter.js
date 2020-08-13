@@ -10,7 +10,7 @@ const movies = [
     { title: "Mulan", releaseDate: 2018, genre: "kids", _id: v4() }
 ]
 
-//OPTION 1 for coding get and posts 
+//OPTION 1 for coding get and posts --- (option 2 is in tvshowRouter.js)
 
 //get all
 movieRouter.get("/", (req, res) => {
@@ -37,7 +37,8 @@ movieRouter.get("/search/genre", (req, res) => {
 movieRouter.post("/", (req, res) => {
     req.body._id = v4()
     movies.push(req.body)
-    res.send(`${req.body.title} has been added to the database`)
+    res.send(req.body)
+    // res.send(`${req.body.title} has been added to the database`)
 })
 
 // delete one
@@ -56,7 +57,8 @@ movieRouter.put("/:movieId", (req, res) => {
     const movieId = req.params.movieId
     const movieIndex = movies.findIndex(movie => movieId === movie._id)
     const updatedMovie = Object.assign(movies[movieIndex], req.body)
-    res.send(`New data posted: ${movies[movieIndex].title}`)
+    res.send(req.body)
+    // res.send(`New data posted: ${movies[movieIndex].title}`)
 })
 
 module.exports = movieRouter
