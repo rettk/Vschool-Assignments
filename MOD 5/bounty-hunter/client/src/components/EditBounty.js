@@ -1,15 +1,17 @@
 import React, { useState } from "react"
 
 
-function EnterBounty(props) {
+function EditBounty(props) {
+
+    // console.log(props)
 
     const initData = {
-        firstName: "",
-        lastName: "",
-        living: true,
-        bountyAmount: "",
-        type: "",
-        _id: ""
+        firstName: props.firstName,
+        lastName: props.lastName,
+        living: props.living,
+        bountyAmount: props.bountyAmount,
+        type: props.type,
+        _id: props._id
     }
 
     const [bountyInfo, setBountyInfo] = useState(initData)
@@ -19,14 +21,14 @@ function EnterBounty(props) {
         setBountyInfo((prevBountyInfo) => ({
             ...prevBountyInfo, [name]: value
         })
-
         )
     }
 
     function handleSubmit(event) {
         event.preventDefault()
-        props.addBounty(bountyInfo)
+        props.updateBounty(bountyInfo._id, bountyInfo)
         setBountyInfo(initData)
+        props.setEditState(false)
     }
 
 
@@ -34,25 +36,25 @@ function EnterBounty(props) {
 
     return (
         <div>
-            <div>Enter New Bounty Here</div>
+            <div>Edit Bounty Information</div>
             <form onSubmit={handleSubmit}>
                 <input name="firstName"
                     value={bountyInfo.firstName}
-                    placeholder="First Name"
+                    // placeholder="First Name"
                     onChange={handleChange}
                     className="entry-field"
                 >
                 </input>
                 <input name="lastName"
                     value={bountyInfo.lastName}
-                    placeholder="Last Name"
+                    // placeholder="Last Name"
                     onChange={handleChange}
                     className="entry-field"
                 >
                 </input>
                 <input name="bountyAmount"
                     value={bountyInfo.bountyAmount}
-                    placeholder="Bounty Amount"
+                    // placeholder="Bounty Amount"
                     type="number"
                     onChange={handleChange}
                     className="entry-field"
@@ -60,7 +62,7 @@ function EnterBounty(props) {
                 </input>
                 <input name="type"
                     value={bountyInfo.type}
-                    placeholder="Type"
+                    // placeholder="Type"
                     onChange={handleChange}
                     className="entry-field"
                 >
@@ -77,4 +79,4 @@ function EnterBounty(props) {
 }
 
 
-export default EnterBounty
+export default EditBounty
