@@ -40,21 +40,21 @@ function EditBounty(props) {
             <form onSubmit={handleSubmit}>
                 <input name="firstName"
                     value={bountyInfo.firstName}
-                    // placeholder="First Name"
+                    placeholder="First Name"
                     onChange={handleChange}
                     className="entry-field"
                 >
                 </input>
                 <input name="lastName"
                     value={bountyInfo.lastName}
-                    // placeholder="Last Name"
+                    placeholder="Last Name"
                     onChange={handleChange}
                     className="entry-field"
                 >
                 </input>
                 <input name="bountyAmount"
                     value={bountyInfo.bountyAmount}
-                    // placeholder="Bounty Amount"
+                    placeholder="Bounty Amount"
                     type="number"
                     onChange={handleChange}
                     className="entry-field"
@@ -62,7 +62,7 @@ function EditBounty(props) {
                 </input>
                 <input name="type"
                     value={bountyInfo.type}
-                    // placeholder="Type"
+                    placeholder="Type"
                     onChange={handleChange}
                     className="entry-field"
                 >

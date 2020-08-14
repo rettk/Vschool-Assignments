@@ -40,3 +40,21 @@ h3 {
 .horizontal-line {
     border-top: 2px
 }
+
+.fixed {
+    /* position: -webkit-sticky; */
+    position: sticky;
+    top:0;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+#picture {
+    display: block;
+    background-image: url(components/bountyhunter.jpg) top right/cover no-repeat;
+    height: 290;
+}

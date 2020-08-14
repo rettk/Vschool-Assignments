@@ -118,22 +118,32 @@ function App() {
         />)
 
     return (
-        <div>
-            <h1>The Bounty Hunter's Database</h1>
-            <EnterBounty addBounty={addBounty} />
-            <div className="inline">
-                <h3 id="display-terminated">Display Terminated?</h3>&nbsp;
-                <input
-                    type="checkbox"
-                    className="checkbox"
-                    onChange={toggleView}
-                >
+        <div className="container">
+            
+            <div className="fixed">
 
-                </input>
-                <br></br>
+                <h1 >The Bounty Hunter's Database</h1>
+                <EnterBounty addBounty={addBounty} />
+                <div className="inline">
+                    <h3 id="display-terminated">Display Terminated?</h3>&nbsp;
+                <input
+                        type="checkbox"
+                        className="checkbox"
+                        onChange={toggleView}
+                    >
+                    </input>
+                    <br></br>
+                </div>
+                <hr></hr>
             </div>
-            <hr></hr>
-            {showTerminated ? allBounties : bountiesMinusTerminated}
+
+            <div>
+                {showTerminated ? allBounties : bountiesMinusTerminated}
+            </div>
+
+            <div id="picture">
+
+            </div>
 
 
         </div>
