@@ -60,13 +60,25 @@ function EditBounty(props) {
                     className="entry-field"
                 >
                 </input>
-                <input name="type"
+                <select
+                        onChange={handleChange}
+                        name="type"
+                        type="checkbox"
+                        className="entry-field"
+                    // onChange={toggleView}
+                    >
+                        <option name="type">Choose Type</option>
+                        <option name="type" value="Jedi">Jedi</option>
+                        <option name="type" value="Sith">Sith</option>
+                        <option name="type" value="Other">Other</option>
+                    </select>
+                {/* <input name="type"
                     value={bountyInfo.type}
                     placeholder="Type"
                     onChange={handleChange}
                     className="entry-field"
                 >
-                </input>
+                </input> */}
 
                 <div style={{ margin: "10px" }}>
                     <button>SUBMIT</button>
@@ -74,6 +86,7 @@ function EditBounty(props) {
 
             </form>
             <hr></hr>
+            
         </div>
     )
 }

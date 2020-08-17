@@ -28,12 +28,21 @@ function AddMovieForm(props) {
                     onChange={handleChange}>
                 </input>
                 {"      "}
-                <input type="textbox"
+                <select onChange={handleChange} className="input-same">
+                    <option value="">Select Genre</option>
+                    <option value="action">Action</option>
+                    <option value="comedy">Comedy</option>
+                    <option value="romance">Romance</option>
+                    <option value="horror">Horror</option>
+                </select>
+
+
+                {/* <input type="textbox"
                     placeholder="Genre"
                     name="genre"
                     value={tempData.genre}
                     onChange={handleChange}>
-                </input>
+                </input> */}
                 {"      "}
                 <input type="number"
                     min="1900"

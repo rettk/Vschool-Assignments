@@ -40,6 +40,14 @@ input {
     margin: 5px;
 }
 
+.input-same {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    margin: 5px;
+}
+
 button {
     padding: 5px;
     border-radius: 4px;
@@ -56,3 +64,6 @@ button {
     color: whitesmoke;
 }
 
+.filter-form {
+    width: 200px;
+}
