@@ -2,7 +2,13 @@ import React, { useState, useEffect, useContext } from "react"
 import { Link } from "react-router-dom"
 import axios from "axios"
 import { SignContext } from "./signContext"
+// import dotenv from "dotenv"
 
+const dotenv = require("dotenv").config({
+    path: `${__dirname}/dev.env`
+})
+
+console.log(process.env)
 
 function Home() {
 

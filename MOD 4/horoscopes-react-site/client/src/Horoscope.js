@@ -1,7 +1,9 @@
 import React, { useContext, useEffect } from "react"
 import { SignContext } from "./signContext"
 import { Link } from "react-router-dom"
+const dotenv = require("dotenv")
 
+console.log(process.env)
 
 function Horoscope() {
 
