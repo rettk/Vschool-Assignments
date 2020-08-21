@@ -2,33 +2,44 @@ import React, { useState, useEffect, useContext } from "react"
 import { Link } from "react-router-dom"
 import axios from "axios"
 import { SignContext } from "./signContext"
-// import dotenv from "dotenv"
 
-const dotenv = require("dotenv").config({
-    path: `${__dirname}/dev.env`
-})
-
-console.log(process.env)
 
 function Home() {
 
-    const { headers, sign, signData, birthDate, signData2, setSign, setSignData, setSignData2, setBirthDate } = useContext(SignContext)
+    const { headers, sign, signData, birthDate,
+        signData2, setSign, setSignData, callState, setCallState,
+        setSignData2, setBirthDate } = useContext(SignContext)
+
 
 
     useEffect(() => {
 
-        if (sign) {
-            axios.post(`https://aztro.sameerkumar.website?sign=${sign}&day=today`)
-                // .then(response => console.log(response))
-                // .then(response => dataToState(response.data))
-                // .then(response => response.json())
+        if (callState === false) {
+            return
+        }
+        else {
+            setCallState(false)
+            axios.get(`/${sign}`)
+                //             // .then(response => console.log(response))
+                //             // .then(response => dataToState(response.data))
+                //             // .then(response => response.json())
                 .then(response => {
                     const stuff = response.data
                     setSignData(stuff)
+
+                })
+
+            axios.get(`/birth/${birthDate}`)
+                .then(response => {
+                    const stuff2 = response.data
+                    setSignData2(stuff2)
+                })
+
+                .catch(error => {
+                    console.log(error)
                 })
         }
-    }, [sign]
-    )
+    }, [callState])
 
 
 
@@ -63,36 +74,13 @@ function Home() {
         const value = event.target.value
         setSign(value)
         setBirthDate(birthChart[event.target.value])
+        setCallState(true)
 
-
+        // console.log(callState)
         // console.log(sign)
         // console.log(birthDate)
 
     }
-
-    useEffect(() => {
-        // console.log(birthDate)
-        if (!birthDate) {
-            return
-        } else if
-            (birthDate.length < 11) {
-            return
-        } else {
-
-            axios(config2)
-                .then(response => {
-                    const stuff2 = response.data.data
-                    setSignData2(stuff2)
-                })
-
-                .catch(error => {
-                    console.log(error)
-                })
-            // console.log(birthDate)
-        }
-    }, [birthDate]
-    )
-
 
 
 
@@ -104,30 +92,40 @@ function Home() {
 
 
 
-    var config2 = {
-        method: 'post',
-        url: `https://astrology-horoscope.p.rapidapi.com/zodiac_astrology/result?mystic_dob=${birthDate}&mystic_name=bob`,
-        headers: {
-            'X-RapidAPI-Key': 'a2d06be477msh1655c96c95fc081p184686jsn60d8d9d43b9b'
-        }
-    }
+    // var config2 = {
+    //     method: 'post',
+    //     url: `https://astrology-horoscope.p.rapidapi.com/zodiac_astrology/result?mystic_dob=${birthDate}&mystic_name=bob`,
+    //     headers: {
+    //         'X-RapidAPI-Key': 'a2d06be477msh1655c96c95fc081p184686jsn60d8d9d43b9b'
+    //     }
+    // }
 
 
 
 
     function handleSubmit(event) {
         event.preventDefault()
-        axios(config2)
+        axios.get(`/birth/${birthDate}`)
             .then(function (response) {
-                const stuff2 = response.data.data
+                const stuff2 = response
                 // console.log(stuff2)
                 setSignData2(stuff2)
                 setSign(stuff2["Your Sun Sign"]["Sun Sign"])
 
             })
+
+        axios.get(`/${sign}`)
+            //             // .then(response => console.log(response))
+            //             // .then(response => dataToState(response.data))
+            //             // .then(response => response.json())
+            .then(response => {
+                const stuff = response.data
+                setSignData(stuff)
+
+            })
             .catch(function (error) {
-                console.log(error);
-            });
+                console.log(error)
+            })
 
     }
 
@@ -145,14 +143,20 @@ function Home() {
         return (nameCapitalized)
     }
 
-    function lowerize(string) {
-        const nameLowerized = string.charAt(0).toLowerCase() + string.slice(1)
-        return (nameLowerized)
-    }
+    // function lowerize(string) {
+    //     const nameLowerized = string.charAt(0).toLowerCase() + string.slice(1)
+    //     return (nameLowerized)
+    // }
 
-    // console.log(birthDate)
-    // console.log(signData)
+    //CONSOLE LOGS
+    console.log(callState)
+    console.log(sign)
+    console.log(birthDate)
+    console.log(signData)
     // console.log(signData2.data["Your Sun Sign"]["Sun Sign"])
+    console.log(signData2)
+
+    let today = new Date().toLocaleDateString()
 
     return (
         <div>
@@ -196,7 +200,8 @@ function Home() {
             </div>
             <div className="space"></div>
             <div className="main">
-                <text>{signData.current_date}</text>
+                <h2>Today: {today}</h2>
+                {/* <text>{signData.current_date}</text> */}
             </div>
             <div className="space"></div>
             <div>

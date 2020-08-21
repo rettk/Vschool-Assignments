@@ -17,9 +17,6 @@ axios.get('/url', {
 
 
 
-X-RapidAPI-Key
-Key:  a2d06be477msh1655c96c95fc081p184686jsn60d8d9d43b9b
-
 
 
 post - https://astrology-horoscope.p.rapidapi.com/zodiac_astrology/result

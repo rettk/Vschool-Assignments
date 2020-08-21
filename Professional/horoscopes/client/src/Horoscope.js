@@ -1,9 +1,7 @@
 import React, { useContext, useEffect } from "react"
 import { SignContext } from "./signContext"
 import { Link } from "react-router-dom"
-const dotenv = require("dotenv")
 
-console.log(process.env)
 
 function Horoscope() {
 
@@ -36,19 +34,13 @@ function Horoscope() {
         Pisces: "2000-03-05",
     }
 
-    var config2 = {
-        method: 'post',
-        url: `https://astrology-horoscope.p.rapidapi.com/zodiac_astrology/result?mystic_dob=${birthDate}&mystic_name=bob`,
-        headers: {
-            'X-RapidAPI-Key': 'a2d06be477msh1655c96c95fc081p184686jsn60d8d9d43b9b'
-        }
-    }
+
 
     function clearSign() {
         setSign("")
     }
 
-    setBirthDate(sign => birthChart[sign])
+    // setBirthDate(sign => birthChart[sign])
     // console.log(sign)
     // console.log(birthDate)
 
@@ -59,7 +51,6 @@ function Horoscope() {
 
     const generalTraits =
         signData2["Traits"] ? signData2["Traits"]["General Traits"].split("<br><br>") : null
-
 
 
     return (

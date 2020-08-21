@@ -4,9 +4,7 @@ import App from "./App"
 import { BrowserRouter as Router } from "react-router-dom"
 import { SignContextProvider } from "./signContext"
 import "./styles.css"
-require("dotenv").config({
-    path: "../env"
-})
+
 
 
 ReactDOM.render(
