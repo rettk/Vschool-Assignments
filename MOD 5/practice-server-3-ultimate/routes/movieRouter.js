@@ -28,6 +28,10 @@ movieRouter.get("/", (req, res, next) => {
 movieRouter.get("/:movieId", (req, res) => {
     const movieId = req.params.movieId
     const foundMovie = movies.find(movie => movieId === movie._id)
+    if (!foundMovie) {
+        const error = new Error(`No item with id ${movieId}found`)
+        return next(error)
+    }
     res.send(foundMovie)
 })
 

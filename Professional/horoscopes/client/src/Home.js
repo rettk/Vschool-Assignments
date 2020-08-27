@@ -7,39 +7,8 @@ import { SignContext } from "./signContext"
 function Home() {
 
     const { headers, sign, signData, birthDate,
-        signData2, setSign, setSignData, callState, setCallState,
+        signData2, setSign, setSignData,
         setSignData2, setBirthDate } = useContext(SignContext)
-
-
-
-    useEffect(() => {
-
-        if (callState === false) {
-            return
-        }
-        else {
-            setCallState(false)
-            axios.get(`/${sign}`)
-                //             // .then(response => console.log(response))
-                //             // .then(response => dataToState(response.data))
-                //             // .then(response => response.json())
-                .then(response => {
-                    const stuff = response.data
-                    setSignData(stuff)
-
-                })
-
-            axios.get(`/birth/${birthDate}`)
-                .then(response => {
-                    const stuff2 = response.data
-                    setSignData2(stuff2)
-                })
-
-                .catch(error => {
-                    console.log(error)
-                })
-        }
-    }, [callState])
 
 
 
@@ -70,73 +39,65 @@ function Home() {
         Pisces: "2000-03-05",
     }
 
+
     function signChoice(event) {
         const value = event.target.value
+        const date = birthChart[event.target.value]
         setSign(value)
-        setBirthDate(birthChart[event.target.value])
-        setCallState(true)
+        setBirthDate(date)
+        axios1(sign)
+        axios2(birthDate)
 
-        // console.log(callState)
+        // setCallState(true)
         // console.log(sign)
         // console.log(birthDate)
 
     }
-
-
 
     function handleChange(event) {
         const date = event.target.value
         setBirthDate(date)
     }
 
-
-
-
-    // var config2 = {
-    //     method: 'post',
-    //     url: `https://astrology-horoscope.p.rapidapi.com/zodiac_astrology/result?mystic_dob=${birthDate}&mystic_name=bob`,
-    //     headers: {
-    //         'X-RapidAPI-Key': 'a2d06be477msh1655c96c95fc081p184686jsn60d8d9d43b9b'
-    //     }
-    // }
-
-
-
-
-    function handleSubmit(event) {
-        event.preventDefault()
-        axios.get(`/birth/${birthDate}`)
-            .then(function (response) {
-                const stuff2 = response
-                // console.log(stuff2)
-                setSignData2(stuff2)
-                setSign(stuff2["Your Sun Sign"]["Sun Sign"])
-
-            })
-
+    function axios1(sign) {
         axios.get(`/${sign}`)
-            //             // .then(response => console.log(response))
-            //             // .then(response => dataToState(response.data))
-            //             // .then(response => response.json())
             .then(response => {
                 const stuff = response.data
                 setSignData(stuff)
-
             })
-            .catch(function (error) {
+            .catch(error => {
                 console.log(error)
             })
+    }
+
+    async function axios2(birthDate) {
+        await axios.get(`/birth/${birthDate}`)
+            .then(response => {
+                const stuff2 = response.data
+                setSignData2(stuff2)
+
+            })
+
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
+
+
+    async function handleSubmit(event) {
+        event.preventDefault()
+
+        await axios2(birthDate)
+        await setSign(signData2["Your Sun Sign"]["Sun Sign"])
+        await axios1(sign)
+
+
+
 
     }
 
 
-    // function handleSubmit(event) {
-    //     event.preventDefault()
-    //     axios.post(`https://astrology-horoscope.p.rapidapi.com/zodiac_finder/result?mystic_dob=${birthDate}`, { header: headers })
-    //         .then(response => {
-    //             console.log(response.data)
-    //         })
-    // }
 
     function capitalize(string) {
         const nameCapitalized = string.charAt(0).toUpperCase() + string.slice(1)
@@ -149,7 +110,6 @@ function Home() {
     // }
 
     //CONSOLE LOGS
-    console.log(callState)
     console.log(sign)
     console.log(birthDate)
     console.log(signData)
@@ -216,7 +176,6 @@ function Home() {
     )
 
 }
-
 
 
 export default Home

@@ -9,6 +9,12 @@ const mongoose = require("mongoose")
 app.use(express.json()) // looks for a requst and makes it req.body
 app.use(morgan("dev"))  // logs requests to the console
 
+// Error Handler
+app.use((err, req, res, next) => {
+    console.log(err)
+    return res.send({ errMsg: err.message })
+})
+
 //Connect to database
 mongoose.connect("mongodb://localhost:27017/moviesdb",
     {

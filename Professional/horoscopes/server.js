@@ -29,15 +29,12 @@ function getData2(birthDate) {
     axios(config2)
         .then(function (response) {
             stuff2 = response.data.data
-            console.log(stuff2)
-            // setSignData2(stuff2)
-            // setSign(stuff2["Your Sun Sign"]["Sun Sign"])
+            // console.log(stuff2)
             return response.data.data
         })
         .catch(function (error) {
             console.log(error);
         });
-
 }
 
 app.get("/birth/:date", (req, res, next) => {
@@ -74,7 +71,6 @@ app.listen(9000, () => {
     console.log("server running on port 9000")
 })
 
-
 //multiple axios requests???
 
 // import axios from 'axios';
@@ -95,8 +91,6 @@ app.listen(9000, () => {
 // })).catch(errors => {
 //   // react on errors.
 // })
-
-
 
 
 //delete????

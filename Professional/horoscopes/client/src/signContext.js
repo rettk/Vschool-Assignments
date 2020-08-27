@@ -9,14 +9,14 @@ function SignContextProvider(props) {
     const [signData, setSignData] = useState({ description: "" })
     const [birthDate, setBirthDate] = useState()
     const [signData2, setSignData2] = useState({ ["Your Sun Sign"]: "" })
-    const [callState, setCallState] = useState(false)
+    
     
     
 
     return (
         <SignContext.Provider
-            value={{ callState, sign, signData, birthDate, signData2, 
-            setCallState, setSign, setSignData, setBirthDate, setSignData2 }}>
+            value={{  sign, signData, birthDate, signData2, 
+            setSign, setSignData, setBirthDate, setSignData2 }}>
             {props.children}
         </SignContext.Provider>
     )
