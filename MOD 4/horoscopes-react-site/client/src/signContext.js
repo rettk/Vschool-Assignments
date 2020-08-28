@@ -13,11 +13,16 @@ function SignContextProvider(props) {
 
     return (
         <SignContext.Provider
-            value={{ sign, signData, birthDate, signData2, setSign, setSignData, setBirthDate, setSignData2 }}>
+            value={{
+                sign, signData,
+                birthDate, signData2,
+                setSign, setSignData,
+                setBirthDate, setSignData2
+            }}
+        >
             {props.children}
         </SignContext.Provider>
     )
-
 }
 
 
