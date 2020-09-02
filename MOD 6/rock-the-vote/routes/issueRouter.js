@@ -43,7 +43,7 @@ issueRouter.post("/:userId", (req, res, next) => {
 
 // Post new comment on an issue
 
-
+// issueRouter.put("/:issueId")
 
 
 // Put update your own issue
