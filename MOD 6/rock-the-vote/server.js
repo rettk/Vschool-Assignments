@@ -5,13 +5,7 @@ const mongoose = require("mongoose")
 const expressJwt = require("express-jwt")
 require("dotenv").config()
 
-// Dummy Test Data
 
-const issueData = {
-    abortionRights: {
-
-    }
-}
 
 
 // Middleware
@@ -32,8 +26,9 @@ mongoose.connect("mongodb://localhost:27017/issuesDB",
 )
 
 // Routes
+app.use("/auth", require("./routes/authRouter.js"))
 app.use("/api", expressJwt({ secret: process.env.SECRET, algorithms: ['HS256'] }))
-
+app.use("/api/issue", require("./routes/issueRouter.js"))
 
 
 // Error Handler

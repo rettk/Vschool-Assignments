@@ -1,9 +1,13 @@
-import React from "react"
-import { Switch, Link, Route } from "react-router-dom"
-import Signup from "./Signup"
+import React, { useContext } from "react"
+import { Link } from "react-router-dom"
+
 import Login from "./Login"
+import { StateContext } from "../stateContext"
+
 
 function Header() {
+    const { logInAndOut, isLoggedIn } = useContext(StateContext)
+    console.log(isLoggedIn)
     return (
         <div id="header">
             <div id="main-words" style={{ color: "red" }}>
@@ -16,7 +20,7 @@ function Header() {
                 <div className="login-item">
                     <Link to="/signup">Create an Account</Link>
                 </div>
-                
+
             </div>
 
         </div>

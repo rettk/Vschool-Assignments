@@ -13,10 +13,17 @@ const issueSchema = new Schema({
     },
     votes: {
         type: Array,
-        required: true,
-        default: 0
+        required: true
     },
-    
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true
+    },
+    comments: {
+        type: Array
+    }
+
 })
 
 module.exports = mongoose.model("Issue", issueSchema)
