@@ -7,7 +7,6 @@ require("dotenv").config()
 
 
 
-
 // Middleware
 app.use(express.json())  // looks for request and makes it req.body
 app.use(morgan("dev"))  // logs requests to the console
@@ -24,6 +23,7 @@ mongoose.connect("mongodb://localhost:27017/issuesDB",
     },
     () => console.log("Connected to mongo database")
 )
+
 
 // Routes
 app.use("/auth", require("./routes/authRouter.js"))

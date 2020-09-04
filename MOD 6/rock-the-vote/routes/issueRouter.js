@@ -2,6 +2,7 @@ const express = require("express")
 const issueRouter = express.Router()
 const Issue = require("../models/issue.js")
 
+
 // Get all posts
 
 issueRouter.get("/", (req, res, next) => {
@@ -29,8 +30,8 @@ issueRouter.get("/:userId", (req, res, next) => {
 
 // Post new user issue
 
-issueRouter.post("/:userId", (req, res, next) => {
-    req.body.user = req.params.userId
+issueRouter.post("/", (req, res, next) => {
+    req.body.user = req.user._id
     const newIssue = new Issue(req.body)
     newIssue.save((err, savedIssue) => {
         if (err) {
@@ -43,7 +44,7 @@ issueRouter.post("/:userId", (req, res, next) => {
 
 // Post new comment on an issue
 
-// issueRouter.put("/:issueId")
+issueRouter.put("/:issueId")
 
 
 // Put update your own issue
@@ -60,6 +61,63 @@ issueRouter.put("/:issueId", (req, res, next) => {
         })
 })
 
+// Up/Down Vote Issue
+
+issueRouter.put("/upvote/:issueId", async (req, res, next) => {
+    try {
+        const issue = await Issue.findOne({ _id: req.params.issueId });
+        if (issue.downVotes.includes(req.user._id)) {
+            const updateDownVotes = await Issue.findOneAndUpdate(
+                { _id: req.params.issueId },
+                {
+                    $inc: { downvote: -1 },
+                    $pull: { downVotes: req.user._id }
+                }
+            )
+        }
+
+        if (issue.upVotes.includes(req.user._id)) {
+            res.status(403);
+            throw new Error('Already upvoted!');
+        }
+        const updated = await Issue.findOneAndUpdate(
+            { _id: req.params.issueId },
+            {
+                $inc: { upvote: +1 },
+                $push: { upVotes: req.user._id }
+            },
+            { new: true }
+        );
+        return res.status(200).send(updated);
+    } catch (err) {
+        res.status(500);
+        return next(err);
+    }
+})
+
+issueRouter.put("/downvote/:issueId", async (req, res, next) => {
+    try {
+        const issue = await Issue.findOne({ _id: req.params.issueId });
+        if (issue.votedUser.includes(req.user._id)) {
+            res.status(403);
+            throw new Error('You can only vote once per issue!');
+        }
+        const updated = await Issue.findOneAndUpdate(
+            { _id: req.params.issueId },
+            {
+                $inc: { downvote: +1 },
+                $push: { votedUser: req.user._id }
+            },
+            { new: true }
+        );
+        return res.status(200).send(updated);
+    } catch (err) {
+        res.status(500);
+        return next(err);
+    }
+})
 
 
 module.exports = issueRouter
+
+
