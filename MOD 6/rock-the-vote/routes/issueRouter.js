@@ -63,27 +63,27 @@ issueRouter.put("/:issueId", (req, res, next) => {
 
 // Up/Down Vote Issue
 
-issueRouter.put("/upvote/:issueId", async (req, res, next) => {
+issueRouter.put("/upvote/:issueId", (req, res, next) => {
     try {
-        const issue = await Issue.findOne({ _id: req.params.issueId });
+        const issue = Issue.findOne({ _id: req.params.issueId });
         if (issue.downVotes.includes(req.user._id)) {
-            const updateDownVotes = await Issue.findOneAndUpdate(
+            const updateDownVotes = Issue.findOneAndUpdate(
                 { _id: req.params.issueId },
                 {
-                    $inc: { downvote: -1 },
+                    // $inc: { downvote: -1 },
                     $pull: { downVotes: req.user._id }
                 }
             )
         }
 
         if (issue.upVotes.includes(req.user._id)) {
-            res.status(403);
+            // res.status(403);
             throw new Error('Already upvoted!');
         }
-        const updated = await Issue.findOneAndUpdate(
+        const updated = Issue.findOneAndUpdate(
             { _id: req.params.issueId },
             {
-                $inc: { upvote: +1 },
+                // $inc: { upvote: +1 },
                 $push: { upVotes: req.user._id }
             },
             { new: true }
