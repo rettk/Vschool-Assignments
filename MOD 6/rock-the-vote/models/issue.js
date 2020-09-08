@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const { schema } = require("./user")
 const Schema = mongoose.Schema
 
 const issueSchema = new Schema({
@@ -29,7 +30,12 @@ const issueSchema = new Schema({
             ref: "User",
             required: true
         },
-        text: String
+        text: String,
+        date: {
+            type: Date,
+            default: Date.now
+        },
+
     }]
 
 })
