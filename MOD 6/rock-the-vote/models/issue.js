@@ -37,6 +37,10 @@ const issueSchema = new Schema({
         },
 
     }]
+    // comments: {
+    //     type: [Object],
+    //     default: []
+    // }
 
 })
 

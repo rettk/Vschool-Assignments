@@ -17,7 +17,7 @@ export default function Auth() {
       [name]: value
     }))
   }
-
+  
   function handleSignup(e) {
     e.preventDefault()
     signup(inputs)
