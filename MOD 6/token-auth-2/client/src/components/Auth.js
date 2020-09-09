@@ -1,36 +1,39 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import AuthForm from './AuthForm.js'
+import { UserContext } from "../context/UserProvider.js"
 
 const initInputs = { username: "", password: "" }
 
-export default function Auth(){
+export default function Auth() {
   const [inputs, setInputs] = useState(initInputs)
   const [toggle, setToggle] = useState(false)
 
-  function handleChange(e){
-    const {name, value} = e.target
+  const { signup, login } = useContext(UserContext)
+
+  function handleChange(e) {
+    const { name, value } = e.target
     setInputs(prevInputs => ({
       ...prevInputs,
       [name]: value
     }))
   }
 
-  function handleSignup(e){
+  function handleSignup(e) {
     e.preventDefault()
-    // signup
+    signup(inputs)
   }
 
-  function handleLogin(e){
+  function handleLogin(e) {
     e.preventDefault()
-    // login
+    login(inputs)
   }
 
   return (
     <div className="auth-container">
       <h1>Todo App</h1>
-      { !toggle ?
+      {!toggle ?
         <>
-          <AuthForm 
+          <AuthForm
             handleChange={handleChange}
             handleSubmit={handleSignup}
             inputs={inputs}
@@ -38,9 +41,9 @@ export default function Auth(){
           />
           <p onClick={() => setToggle(prev => !prev)}>Already a member?</p>
         </>
-      :
+        :
         <>
-          <AuthForm 
+          <AuthForm
             handleChange={handleChange}
             handleSubmit={handleLogin}
             inputs={inputs}
