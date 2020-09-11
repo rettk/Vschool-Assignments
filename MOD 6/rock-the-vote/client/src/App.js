@@ -1,15 +1,15 @@
-import React, { useState, useContext } from "react"
+import React, { useContext } from "react"
 import Header from "./components/Header.js"
 import { Switch, Link, Route } from "react-router-dom"
 import Signup from "./components/Signup"
 import Home from "./components/Home"
+import Profile from "./components/Profile.js"
 import { StateContext } from "./stateContext"
 
 function App() {
 
-    const [issues, setIssues] = useState([])
-    const { isLoggedIn } = useContext(StateContext)
-    console.log(isLoggedIn)
+    const { signup } = useContext(StateContext)
+
     return (
         <div>
             <div>
@@ -17,8 +17,8 @@ function App() {
             </div>
             <Switch>
                 <Route exact path="/"><Home /></Route>
-                <Route path="/signup"><Signup /></Route>
-                <Route path="/login"></Route>
+                <Route path="/signup"><Signup signup={signup} /></Route>
+                <Route path="/profile"><Profile /></Route>
             </Switch>
         </div>
     )

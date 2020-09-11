@@ -1,14 +1,16 @@
 import React, { useState } from "react"
 
-function Signup() {
+function Signup(props) {
     const [userDetails, setUserDetails] = useState({
         username: "",
         password: ""
     })
 
+    const { signup } = props
+
     function onSubmit(e) {
         e.preventDefault()
-
+        signup(userDetails)
     }
 
     function handleChange(e) {
@@ -20,11 +22,12 @@ function Signup() {
     }
 
     // console.log(userDetails)
+    // console.log(props)
 
     return (
         <div>
             <div>
-                <h2>Create an Account!</h2>
+                <h2>Create A New Account!</h2>
             </div>
             <form onSubmit={onSubmit}>
                 <input name="username"
@@ -32,7 +35,7 @@ function Signup() {
                     onChange={handleChange}
                     placeholder="username"
                     className="sign-in-item"
-                    >
+                >
 
                 </input>
                 <input name="password"
@@ -40,7 +43,7 @@ function Signup() {
                     onChange={handleChange}
                     placeholder="password"
                     className="sign-in-item"
-                    >
+                >
 
                 </input>
                 <button className="sign-in-item">SUBMIT</button>
