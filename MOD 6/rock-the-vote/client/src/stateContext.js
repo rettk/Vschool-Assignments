@@ -11,25 +11,53 @@ userAxios.interceptors.request.use(config => {
     return config
 })
 
+// Dummy Test Data
+const testIssues = [
+    {
+        _id: "asdf",
+        upVotes: [1],
+        downVotes: [],
+        title: "test 1",
+        description: "description 1",
+        user: "tina",
+        comments: [
+
+        ]
+    },
+    {
+        _id: "4ksl",
+        upVotes: [1, 2, 3, 4, 5],
+        downVotes: [],
+        title: "test 2",
+        description: "description 2",
+        user: "butthead",
+        comments: [
+
+        ]
+    },
+    {
+        _id: "apw0",
+        upVotes: [1, 2, 3],
+        downVotes: [],
+        title: "test 3",
+        description: "description 3",
+        user: "guy",
+        comments: [
+
+        ]
+    }
+]
+
 function StateContextProvider(props) {
 
     const initState = {
-        user: JSON.parse(localStorage.getItem("user")) || {},
+        user: JSON.parse(localStorage.getItem("user")) || "",
         token: localStorage.getItem("token") || "",
-        issues: []
+        issues: testIssues
     }
 
     const [userState, setUserState] = useState(initState)
 
-    // Dummy Test Data
-    // const startData = [
-    //     {
-    //         _id: 0,
-    //         votes: [],
-    //         title: "",
-    //         description: "",
-    //     }
-    // ]
 
 
     function signup(credentials) {
