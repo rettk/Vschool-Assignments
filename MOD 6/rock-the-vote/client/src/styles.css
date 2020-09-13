@@ -33,3 +33,13 @@
     border-radius: 5%;
     margin: 5px
 }
+
+.votes {
+    display: flex;
+    
+}
+
+.buttons {
+    margin: 8px;
+    margin-top: 19px;
+}

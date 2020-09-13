@@ -6,7 +6,7 @@ import { StateContext } from "../stateContext"
 
 
 function Header(props) {
-    const { login, logout, userState } = useContext(StateContext)
+    const { login, logout } = useContext(StateContext)
     // const token = localStorage.getItem("token")
     // console.log(JSON.parse(localStorage.getItem("user")))
     return (

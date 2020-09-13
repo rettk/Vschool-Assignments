@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import Header from "./components/Header.js"
-import { Switch, Link, Route } from "react-router-dom"
+import { Switch, Route } from "react-router-dom"
 import Signup from "./components/Signup"
 import IssuesList from "./components/IssuesList.js"
 import Home from "./components/Home"

@@ -1,12 +1,20 @@
-import React, { useContext } from "react"
+// import { get } from "mongoose"
+import React, { useContext, useEffect } from "react"
 import { StateContext } from "../stateContext.js"
 import Issue from "./Issue.js"
 
 
 function IssueList() {
 
-    const { userState, issues } = useContext(StateContext)
+    const { issues, upVote, downVote, getIssues } = useContext(StateContext)
     // console.log(issues)
+
+
+    useEffect(() => {
+        getIssues()
+    }, []
+    )
+
     const issuesList = issues.map(item =>
         <Issue key={item._id}
             title={item.title}
@@ -14,11 +22,15 @@ function IssueList() {
             user={item.user}
             upVotes={item.upVotes}
             downVotes={item.downVotes}
+            upVote={upVote}
+            downVote={downVote}
+            _id={item._id}
         />
     )
 
     // console.log(issuesList)
 
+    // this is the sort function to order all the issues by the highest voted on top, lower voted to follow
     issuesList.sort((a, b) => a.props.upVotes.length < b.props.upVotes.length ? 1 : -1)
 
     return (

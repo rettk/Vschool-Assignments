@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { Link } from "react-router-dom"
 
 function Login(props) {
     const [userDetails, setUserDetails] = useState({
@@ -38,7 +39,12 @@ function Login(props) {
             <form onSubmit={onSubmit}>
 
                 {username.username ?
-                    <h3>{`Welcome ${username.username}!`}</h3>
+                    <div>
+                        <h3>{`Welcome ${username.username}!`}</h3>
+                        <Link to="/profile">
+                            <h4>Your Profile</h4>
+                        </Link>
+                    </div>
                     :
                     <div>
                         <input name="username"
