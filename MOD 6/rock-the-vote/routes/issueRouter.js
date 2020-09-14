@@ -42,6 +42,21 @@ issueRouter.post("/", (req, res, next) => {
     })
 })
 
+// Delete user issue
+
+// issueRouter.delete(`/api/issue/${userId}`, (req, res, next) => {
+//     Issue.findOneAndDelete(
+//         { _id: req.params.issueId,
+//         (err, updatedIssue)  => {
+//         if(err) {
+//             res.status(500)
+//             return next(err)
+//         }
+//         return res.status(201).send(updatedIssue)
+//     }
+//     )
+// })
+
 // Post new comment on an issue
 
 issueRouter.put("/comment/:issueId", (req, res, next) => {

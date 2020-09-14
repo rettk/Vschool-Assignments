@@ -1,11 +1,26 @@
 import React from "react"
+import Comment from "./Comment.js"
 
 function Issue(props) {
     // console.log(props)
+
+    const commentList = props.comments.map(item =>
+        <Comment
+            key={item._id}
+            user={item.user}
+            text={item.text}
+            date={item.date}
+        />)
+
     return (
         <div className="issue">
-            <h1>{props.title}</h1>
-            <h5>Posted by {props.user}</h5>
+            <div className="inline">
+                <h1>{props.title}</h1>
+                {props.user._id === props.author ? <button
+                    onClick={() => props.deleteIssue(props._id)}
+                    className="small-button">Delete Issue</button> : ""}
+            </div>
+            <h5>Posted by {props.author}</h5>
             <h2>{props.description}</h2>
             <div className="votes">
                 <h3>Upvotes: {props.upVotes.length}</h3>
@@ -22,6 +37,9 @@ function Issue(props) {
             <form>
                 <button>Add Comment</button>
             </form>
+            <div>
+                {commentList}
+            </div>
         </div>
     )
 }

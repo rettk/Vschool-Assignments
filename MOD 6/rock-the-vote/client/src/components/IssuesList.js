@@ -6,7 +6,7 @@ import Issue from "./Issue.js"
 
 function IssueList() {
 
-    const { issues, upVote, downVote, getIssues } = useContext(StateContext)
+    const { issues, upVote, downVote, getIssues, deleteIssue, user } = useContext(StateContext)
     // console.log(issues)
 
 
@@ -19,12 +19,15 @@ function IssueList() {
         <Issue key={item._id}
             title={item.title}
             description={item.description}
-            user={item.user}
+            author={item.user}
+            user={user}
             upVotes={item.upVotes}
             downVotes={item.downVotes}
             upVote={upVote}
             downVote={downVote}
             _id={item._id}
+            comments={item.comments}
+            deleteIssue={deleteIssue}
         />
     )
 

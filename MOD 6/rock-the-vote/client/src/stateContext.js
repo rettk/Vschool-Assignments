@@ -130,6 +130,12 @@ function StateContextProvider(props) {
             .catch(err => console.log(err.response.data.errMsg))
     }
 
+    function deleteIssue(issueId) {
+        userAxios.delete("/api/issue/:issueId")
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
+    }
+
     function upVote(issueId) {
         userAxios.put(`api/issue/upvote/${issueId}`)
             .then(res => console.log(res))
@@ -139,7 +145,7 @@ function StateContextProvider(props) {
     function downVote(issueId) {
         userAxios.put(`api/issue/downvote/${issueId}`)
             .then(res => console.log(res))
-            .catch(err => console.log(err))
+            .catch(err => console.log(err.response.data.errMsg))
     }
 
     return (
@@ -152,7 +158,8 @@ function StateContextProvider(props) {
             upVote,
             downVote,
             getIssues,
-            getYourIssues
+            getYourIssues,
+            deleteIssue
         }}>
             {props.children}
         </StateContext.Provider>

@@ -1,10 +1,14 @@
 import React, { useContext, useEffect } from "react"
 import { StateContext } from "../stateContext.js"
 import Issue from "./Issue.js"
+import SubmitIssue from "./SubmitIssue.js"
 
 function Profile() {
 
-    const { getYourIssues, issues, upVote, downVote, user } = useContext(StateContext)
+
+
+
+    const { getYourIssues, issues, upVote, downVote, user, deleteIssue } = useContext(StateContext)
 
     // Option 1 to get user Id - get it out of localStorage
     // const userInfo = JSON.parse(localStorage.getItem("user"))
@@ -23,16 +27,23 @@ function Profile() {
             _id={item._id}
             title={item.title}
             description={item.description}
-            user={item.user}
+            author={item.user}
+            user={user}
             upVotes={item.upVotes}
             downVotes={item.downVotes}
             upVote={upVote}
             downVote={downVote}
+            comments={item.comments}
+            deleteIssue={deleteIssue}
         />
     )
 
+ 
+
     return (
         <div>
+
+            <SubmitIssue />
 
             <h2>
                 Your Issues
