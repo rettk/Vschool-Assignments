@@ -148,6 +148,12 @@ function StateContextProvider(props) {
             .catch(err => console.log(err.response.data.errMsg))
     }
 
+    function addComment(comment, issueId) {
+        userAxios.put(`api/issue/comment/${issueId}`, comment)
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
+    }
+
     return (
         <StateContext.Provider value={{
             ...userState, setUserState,
@@ -159,7 +165,8 @@ function StateContextProvider(props) {
             downVote,
             getIssues,
             getYourIssues,
-            deleteIssue
+            deleteIssue,
+            addComment
         }}>
             {props.children}
         </StateContext.Provider>

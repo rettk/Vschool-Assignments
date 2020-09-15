@@ -8,7 +8,7 @@ function Profile() {
 
 
 
-    const { getYourIssues, issues, upVote, downVote, user, deleteIssue } = useContext(StateContext)
+    const { getYourIssues, issues, upVote, downVote, user, deleteIssue, addComment } = useContext(StateContext)
 
     // Option 1 to get user Id - get it out of localStorage
     // const userInfo = JSON.parse(localStorage.getItem("user"))
@@ -35,6 +35,7 @@ function Profile() {
             downVote={downVote}
             comments={item.comments}
             deleteIssue={deleteIssue}
+            addComment={addComment}
         />
     )
 

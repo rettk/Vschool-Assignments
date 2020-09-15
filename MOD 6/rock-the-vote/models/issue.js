@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
 const { schema } = require("./user")
+// const userSchema = require("./user")
 const Schema = mongoose.Schema
 
 const issueSchema = new Schema({
@@ -24,18 +25,26 @@ const issueSchema = new Schema({
         ref: "User",
         required: true
     },
+    // username: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: "User"
+        
+    // },
     comments: [{
         user: {
             type: Schema.Types.ObjectId,
             ref: "User",
             required: true
         },
+        // username: {
+        //     type: Schema.Types.ObjectId,
+        //     ref: "User"
+        // },
         text: String,
         date: {
             type: Date,
             default: Date.now
         },
-
     }]
     // comments: {
     //     type: [Object],

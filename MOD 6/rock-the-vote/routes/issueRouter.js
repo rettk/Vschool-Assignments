@@ -44,9 +44,9 @@ issueRouter.post("/", (req, res, next) => {
 
 // Delete user issue
 
-issueRouter.delete(`/api/issue/:issueId`, (req, res, next) => {
-    console.log(issueId)
-    Issue.findByIdAndDelete(issueId, (err, deletedIssue) => {
+issueRouter.delete(`/:issueId`, (req, res, next) => {
+    // console.log(issueId)
+    Issue.findByIdAndDelete(req.params.issueId, (err, deletedIssue) => {
         if (err) {
             res.status(500)
             return next(err)
