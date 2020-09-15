@@ -59,7 +59,6 @@ function StateContextProvider(props) {
     const [userState, setUserState] = useState(initState)
 
 
-
     function signup(credentials) {
         axios.post("/auth/signup", credentials)
             // .then(res => console.log(res))
@@ -131,7 +130,8 @@ function StateContextProvider(props) {
     }
 
     function deleteIssue(issueId) {
-        userAxios.delete("/api/issue/:issueId")
+        // console.log(issueId)
+        userAxios.delete(`/api/issue/${issueId}`)
             .then(res => console.log(res))
             .catch(err => console.log(err))
     }
