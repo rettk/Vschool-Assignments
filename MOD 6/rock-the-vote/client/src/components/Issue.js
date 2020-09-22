@@ -3,11 +3,17 @@ import Comment from "./Comment.js"
 
 function Issue(props) {
     // console.log(props._id)
-
-    const [inputData, setInputData] = useState({
+    
+    const initData = {
         text: "",
         user: props.user._id
-    })
+    }
+    
+    const [inputData, setInputData] = useState(initData)
+    
+        // useEffect(() => {
+          
+        // },[inputData])
 
     function handleChange(e) {
         const { name, value } = e.target
@@ -19,9 +25,19 @@ function Issue(props) {
 
     // console.log(inputData)
 
-    function handleSubmit(e) {
+    function handleCommentSubmit(e) {
+        e.preventDefault()
         props.addComment(inputData, props._id)
+        setInputData(initData)
+        
     }
+
+     function handleUpvoteSubmit(e) {
+        e.preventDefault()
+
+    }
+
+
 
     const commentList = props.comments.map(item =>
         <Comment
@@ -55,7 +71,7 @@ function Issue(props) {
                     <button className="buttons" onClick={() => props.downVote(props._id)}>Down Vote</button>
                 </form>
             </div>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleCommentSubmit}>
                 <input style={{ "width": "450px" }}
                     type="text"
                     name="text"

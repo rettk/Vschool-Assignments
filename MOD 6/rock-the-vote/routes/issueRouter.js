@@ -15,6 +15,17 @@ issueRouter.get("/", (req, res, next) => {
     })
 })
 
+// Get all posts with username populate
+
+issueRouter.get("/", (req, res, next) => {
+    Issue.find((err, issues) => {
+        if (err) {
+            res.status(500)
+            return next(err)
+        }
+        return res.status(200).send(issues)
+    })
+})
 
 // Get all user's posts
 
@@ -133,6 +144,9 @@ issueRouter.put("/upvote/:issueId", (req, res, next) => {
                     },
                     { new: true }
                 ).exec((err, updated) => {
+                    if (err) {
+                        return res.status(400).send(err)
+                    }
                     return res.status(200).send(updated);
                 })
             }
