@@ -30,7 +30,7 @@ issueRouter.get("/", (req, res, next) => {
 // Get all user's posts
 
 issueRouter.get("/:userId", (req, res, next) => {
-    Issue.find({ user: req.params.userId }, (err, issues) => {
+    Issue.find({ user: req.params.userId }).populate({ path: "user", select: "username" }).exec((err, issues) => {
         if (err) {
             res.status(500)
             return next(err)
@@ -38,6 +38,16 @@ issueRouter.get("/:userId", (req, res, next) => {
         return res.status(200).send(issues)
     })
 })
+
+// issueRouter.get("/:userId", (req, res, next) => {
+//     Issue.find({ user: req.params.userId }, (err, issues) => {
+//         if (err) {
+//             res.status(500)
+//             return next(err)
+//         }
+//         return res.status(200).send(issues)
+//     })
+// })
 
 // Post new user issue
 

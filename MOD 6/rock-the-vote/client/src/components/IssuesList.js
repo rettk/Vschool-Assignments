@@ -8,6 +8,7 @@ function IssueList() {
 
     const { issues, upVote, downVote, getIssues, deleteIssue, user, addComment } = useContext(StateContext)
     console.log(issues)
+    console.log(user)
 
 
     useEffect(() => {

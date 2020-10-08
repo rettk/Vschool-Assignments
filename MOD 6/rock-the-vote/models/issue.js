@@ -25,25 +25,17 @@ const issueSchema = new Schema({
         ref: "User",
         required: true
     },
-    // username: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: "User"
-        
-    // },
     date: {
         type: Date,
         default: Date.now
     },
     comments: [{
-        user: {
-            type: Schema.Types.ObjectId,
-            ref: "User",
-            required: true
-        },
-        // username: {
+        // user: {
         //     type: Schema.Types.ObjectId,
-        //     ref: "User"
+        //     ref: "User",
+        //     required: true
         // },
+        user: String,
         text: String,
         date: {
             type: Date,

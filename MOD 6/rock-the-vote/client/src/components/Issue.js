@@ -55,7 +55,7 @@ function Issue(props) {
                         className="small-button">Delete Issue</button> : ""}
                 </form>
             </div>
-            <h5>Posted by {props.author.username} on {props.date}</h5>
+            <h5>Posted by {props.author.username} on {props.date.slice(0,10)}</h5>
             <h2>{props.description}</h2>
             <div className="votes">
                 <h3>Upvotes: {props.upVotes.length}</h3>
