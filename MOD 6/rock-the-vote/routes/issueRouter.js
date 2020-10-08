@@ -6,7 +6,7 @@ const Issue = require("../models/issue.js")
 // Get all posts
 
 issueRouter.get("/", (req, res, next) => {
-    Issue.find((err, issues) => {
+    Issue.find().populate({ path: "user", select: "username" }).exec((err, issues) => {
         if (err) {
             res.status(500)
             return next(err)

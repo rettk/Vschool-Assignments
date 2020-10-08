@@ -30,6 +30,10 @@ const issueSchema = new Schema({
     //     ref: "User"
         
     // },
+    date: {
+        type: Date,
+        default: Date.now
+    },
     comments: [{
         user: {
             type: Schema.Types.ObjectId,

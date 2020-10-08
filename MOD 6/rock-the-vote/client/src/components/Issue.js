@@ -2,18 +2,18 @@ import React, { useState } from "react"
 import Comment from "./Comment.js"
 
 function Issue(props) {
-    // console.log(props._id)
-    
+    console.log(props)
+
     const initData = {
         text: "",
-        user: props.user._id
+        user: props.user.username
     }
-    
+
     const [inputData, setInputData] = useState(initData)
-    
-        // useEffect(() => {
-          
-        // },[inputData])
+
+    // useEffect(() => {
+
+    // },[inputData])
 
     function handleChange(e) {
         const { name, value } = e.target
@@ -29,15 +29,13 @@ function Issue(props) {
         e.preventDefault()
         props.addComment(inputData, props._id)
         setInputData(initData)
-        
+
     }
 
-     function handleUpvoteSubmit(e) {
+    function handleUpvoteSubmit(e) {
         e.preventDefault()
 
     }
-
-
 
     const commentList = props.comments.map(item =>
         <Comment
@@ -57,7 +55,7 @@ function Issue(props) {
                         className="small-button">Delete Issue</button> : ""}
                 </form>
             </div>
-            <h5>Posted by {props.author}</h5>
+            <h5>Posted by {props.author.username} on {props.date}</h5>
             <h2>{props.description}</h2>
             <div className="votes">
                 <h3>Upvotes: {props.upVotes.length}</h3>

@@ -4,7 +4,7 @@ import { StateContext } from "../stateContext.js"
 function Comment(props) {
 
     const { issues } = useContext(StateContext)
-
+    console.log(props.user)
     return (
         <div>
             <text>{props.text}</text>

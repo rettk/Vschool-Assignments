@@ -36,6 +36,7 @@ function Profile() {
             comments={item.comments}
             deleteIssue={deleteIssue}
             addComment={addComment}
+            date={item.date}
         />
     )
 

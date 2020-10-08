@@ -7,7 +7,7 @@ import Issue from "./Issue.js"
 function IssueList() {
 
     const { issues, upVote, downVote, getIssues, deleteIssue, user, addComment } = useContext(StateContext)
-    // console.log(issues)
+    console.log(issues)
 
 
     useEffect(() => {
@@ -29,6 +29,7 @@ function IssueList() {
             comments={item.comments}
             deleteIssue={deleteIssue}
             addComment={addComment}
+            date={item.date}
         />
     )
 
