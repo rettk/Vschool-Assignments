@@ -21,7 +21,10 @@ function App() {
                     render={() => token ? <Redirect to="/profile" /> : <Home />}
                 >
                 </Route>
-                <Route path="/signup"><Signup signup={signup} /></Route>
+                <Route path="/signup"
+                    render={() => token ? <Redirect to="/profile" /> : <Signup signup={signup} />}
+                >
+                </Route>
                 <Route path="/profile"
                     render={() => !token ? <Redirect to="/" /> : <Profile />}
                 ></Route>
