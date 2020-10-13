@@ -12,8 +12,11 @@ function Header(props) {
     return (
         <div>
             <div id="header">
-                <div id="main-words" style={{ color: "red" }}>
-                    <Link to="/"><h1>Rock The Vote</h1></Link>
+                <div>
+                    <div id="main-words" style={{ color: "red" }}>
+                        <Link to="/"><h1>Rock The Vote</h1></Link>
+                    </div>
+                    {}
                 </div>
                 <div id="login-bar">
                     <Login login={login} logout={logout} />
