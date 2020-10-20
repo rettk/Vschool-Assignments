@@ -178,13 +178,19 @@ const animals = [
 // }
 
 
-filterForDogs = (arr) => {
-    return arr.filter((animal) => {
+// filterForDogs = (arr) => {
+//     return arr.filter((animal) => {
+//         if (animal.type === "dog") {
+//             return true
+//         }
+//     })
+// }
+
+filterForDogs = arr => arr.filter(animal => {
         if (animal.type === "dog") {
             return true
         }
     })
-}
 
 console.log(filterForDogs(animals))
 

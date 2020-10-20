@@ -62,11 +62,11 @@ class Player {
 
 
 
-const test = new Player()
-test.setName("Mario")
+const mario = new Player()
+mario.setName("Mario")
 
 
-console.log(test)
+console.log(mario)
 
 
 const getRandomArbitrary = (max) => {
@@ -82,30 +82,30 @@ const getRandomArbitrary = (max) => {
 
 let intervalID
 
-const turn = (play) => {
-    if (!play.gameActive) {
+const turn = (player) => {
+    if (!player.gameActive) {
         return clearInterval(intervalID)
     }
     let roll = getRandomArbitrary(3)
     if (roll === 0) {
         console.log(`Ouch you got hit!`)
-        play.gotHit()
-        play.print()
+        player.gotHit()
+        player.print()
     } else if (roll === 1) {
         console.log(`You got a powerup!`)
-        play.gotPowerup()
-        play.print()
+        player.gotPowerup()
+        player.print()
     } else if (roll === 2) {
         console.log(`Ding! A coin!`)
-        play.addCoin()
-        play.print()
+        player.addCoin()
+        player.print()
     }
 }
 
 
 
-const game = (time) => {
-    intervalID = setInterval(() => turn(time), 1500) //remember no parantheses on function similar to addEventListener
+const game = (player) => {
+    intervalID = setInterval(() => turn(player), 1500) //remember no parantheses on function similar to addEventListener
 }
 
 // btn.addEventListener("click", () =>  myFunction(data))
@@ -114,7 +114,7 @@ const game = (time) => {
 
 // }    SIMILAR SYNTAX
 
-game(test)
+game(mario)
 
 
 
